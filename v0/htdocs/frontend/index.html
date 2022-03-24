@@ -1,0 +1,69 @@
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <!-- Bootstrap CSS -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+  <link rel="stylesheet" href="../frontend/css/style.css">
+  <title>Welcome</title>
+</head>
+
+<body>
+  <script>
+
+    $(document).ready(function () {
+      $("#add").on("click", newdata),
+      loaddata();
+    });
+
+    function loaddata() {
+      $("li").remove();
+      var path = document.location.origin;
+      var directory = path + '/backend/php/db/test.php';
+      $.ajax({
+        type: "GET",
+        url: directory,
+        cache: false,
+        dataType: "json",
+        data: {op: "load" },
+        success: function (response) {
+
+          $(response).each(function(index) {
+            $("ol").prepend("<li class='entry'>" + response[index][0] + "</li>");
+          });
+        }
+      }
+      );
+    }
+
+    function newdata() {
+
+      var path = document.location.origin;
+      // console.log(path);
+      var directory = path + '/backend/php/db/test.php';
+      // console.log(directory);
+      $.ajax({
+        type: "GET",
+        url: directory,
+        cache: false,
+        data: {op: "new" },
+        // dataType: "json",
+        success: function () {
+          loaddata();
+        }
+      }
+      );
+    }
+
+
+
+  </script>
+
+
+  <div id="output">
+    <button id="add">add</button>
+    <ol></ol>
+  </div>
+  test
+</body>
