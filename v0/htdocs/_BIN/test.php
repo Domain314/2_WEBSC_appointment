@@ -1,6 +1,4 @@
 <?php
-  // include($_SERVER["DOCUMENT_ROOT"] . '/_BIN/console.php');
-
 
   function createNew() {
     $AID = rand(0, 9999999);
@@ -14,6 +12,24 @@
                 $stmt->bindValue(2, $Titel);
                 $stmt->bindValue(3, $Text);
                 $stmt->bindValue(4, $Place);
+                $stmt->execute();
+    }
+  }
+
+  function createNewWithDate($date) {
+    $AID = rand(0, 9999999);
+    $Titel = "test";
+    $Text = "texxt";
+    $Place = "plc";
+    $sqlDate = date('Y-m-d H:i', strtotime($date));
+    $dir = $_SERVER["DOCUMENT_ROOT"] . "/backend/php/db/dbaccess.php";
+    include($dir);
+    if ($stmt = $conn->prepare("INSERT INTO appointments (aID,Titel,Text,Place,Date) VALUES (?,?,?,?,?)")) {
+                $stmt->bindValue(1, $AID);
+                $stmt->bindValue(2, $Titel);
+                $stmt->bindValue(3, $Text);
+                $stmt->bindValue(4, $Place);
+                $stmt->bindValue(5, $sqlDate);
                 $stmt->execute();
     }
   }
@@ -35,6 +51,9 @@
         break;
       case 'load':
         loadAppointments();
+        break;
+      case 'date':
+        createNewWithDate("2022-03-26 12:30:00");
         break;
 
       default:

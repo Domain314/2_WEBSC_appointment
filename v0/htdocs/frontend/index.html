@@ -10,60 +10,80 @@
 </head>
 
 <body>
-  <script>
-
-    $(document).ready(function () {
-      $("#add").on("click", newdata),
-      loaddata();
-    });
-
-    function loaddata() {
-      $("li").remove();
-      var path = document.location.origin;
-      var directory = path + '/backend/php/db/test.php';
-      $.ajax({
-        type: "GET",
-        url: directory,
-        cache: false,
-        dataType: "json",
-        data: {op: "load" },
-        success: function (response) {
-
-          $(response).each(function(index) {
-            $("ol").prepend("<li class='entry'>" + response[index][0] + "</li>");
-          });
-        }
-      }
-      );
-    }
-
-    function newdata() {
-
-      var path = document.location.origin;
-      // console.log(path);
-      var directory = path + '/backend/php/db/test.php';
-      // console.log(directory);
-      $.ajax({
-        type: "GET",
-        url: directory,
-        cache: false,
-        data: {op: "new" },
-        // dataType: "json",
-        success: function () {
-          loaddata();
-        }
-      }
-      );
-    }
-
-
-
-  </script>
 
 
   <div id="output">
-    <button id="add">add</button>
-    <ol></ol>
+    <label>Appointments</label>
+    <ol id="ol-appointment"></ol>
+    <br>
+    <label>Options</label>
+    <ol id="ol-option"></ol>
+    <br>
+    <label>UserInput</label>
+    <ol id="ol-userinput"></ol>
+    <br>
   </div>
-  test
+  <div>
+    <form id="submit-appointment">
+      <label>Appointment</label>
+      <br>
+      <label for="sa-title">Titel</label>
+      <input id="sa-title" name="sa-title" value="" type="text" >
+      <br>
+      <label for="sa-text">Text</label>
+      <input id="sa-text" name="sa-text" value="" type="text" >
+      <br>
+      <label for="sa-place">Place</label>
+      <input id="sa-place" name="sa-place" value="" type="text" >
+      <br>
+      <label for="sa-date">Date</label>
+      <input id="sa-date" name="sa-date" value="" type="date" >
+      <input id="sa-time" name="sa-time" value="" type="time">
+      <br>
+      <label for="sa-date">Exp.Date</label>
+      <input id="sa-expdate" name="sa-expdate" value="" type="date" >
+      <input id="sa-exptime" name="sa-exptime" value="" type="time">
+      <br>
+      <button id="submitApp-btn" >Post</button>
+      <!-- <input type="button" value="post"> -->
+    </form>
+  </div>
+
+  <div>
+    <form id="submit-option">
+      <label>Option</label>
+      <br>
+      <label for="so-aid">AID</label>
+      <input id="so-aid" name="so-aid" value="" type="text" >
+      <br>
+      <label for="so-titel">Titel</label>
+      <input id="so-titel" name="so-titel" value="" type="text" >
+      <br>
+      <label for="so-date">Date</label>
+      <input id="so-date" name="so-date" value="" type="date" >
+      <input id="so-time" name="so-time" value="" type="time">
+      <br>
+      <button id="submitOpt-btn" data-db="options">Post</button>
+    </form>
+  </div>
+
+  <div>
+    <form id="submit-userinput">
+      <label>UserInput</label>
+      <br>
+      <label for="su-oid">OID</label>
+      <input id="su-oid" name="su-oid" value="" type="text" >
+      <br>
+      <label for="su-username">UserName</label>
+      <input id="su-username" name="su-username" value="" type="text" >
+      <br>
+      <label for="su-comment">Comment</label>
+      <input id="su-comment" name="su-comment" value="" type="text" >
+      <br>
+      <button id="submitUI-btn" data-db="userinput">Post</button>
+    </form>
+  </div>
+
+  <script src="js/db-ajax.js"></script>
+
 </body>
