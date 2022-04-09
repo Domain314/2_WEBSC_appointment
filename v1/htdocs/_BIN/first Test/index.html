@@ -1,0 +1,89 @@
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <!-- Bootstrap CSS -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+  <link rel="stylesheet" href="../frontend/css/style.css">
+  <title>Welcome</title>
+</head>
+
+<body>
+
+
+  <div id="output">
+    <label>Appointments</label>
+    <ol id="ol-appointment"></ol>
+    <br>
+    <label>Options</label>
+    <ol id="ol-option"></ol>
+    <br>
+    <label>UserInput</label>
+    <ol id="ol-userinput"></ol>
+    <br>
+  </div>
+  <div>
+    <form id="submit-appointment">
+      <label>Appointment</label>
+      <br>
+      <label for="sa-title">Titel</label>
+      <input id="sa-title" name="sa-title" value="" type="text" >
+      <br>
+      <label for="sa-text">Text</label>
+      <input id="sa-text" name="sa-text" value="" type="text" >
+      <br>
+      <label for="sa-place">Place</label>
+      <input id="sa-place" name="sa-place" value="" type="text" >
+      <br>
+      <label for="sa-date">Date</label>
+      <input id="sa-date" name="sa-date" value="" type="date" >
+      <input id="sa-time" name="sa-time" value="" type="time">
+      <br>
+      <label for="sa-date">Exp.Date</label>
+      <input id="sa-expdate" name="sa-expdate" value="" type="date" >
+      <input id="sa-exptime" name="sa-exptime" value="" type="time">
+      <br>
+      <button id="submitApp-btn" >Post</button>
+      <!-- <input type="button" value="post"> -->
+    </form>
+  </div>
+
+  <div>
+    <form id="submit-option">
+      <label>Option</label>
+      <br>
+      <label for="so-aid">AID</label>
+      <input id="so-aid" name="so-aid" value="" type="text" >
+      <br>
+      <label for="so-titel">Titel</label>
+      <input id="so-titel" name="so-titel" value="" type="text" >
+      <br>
+      <label for="so-date">Date</label>
+      <input id="so-date" name="so-date" value="" type="date" >
+      <input id="so-time" name="so-time" value="" type="time">
+      <br>
+      <button id="submitOpt-btn" data-db="options">Post</button>
+    </form>
+  </div>
+
+  <div>
+    <form id="submit-userinput">
+      <label>UserInput</label>
+      <br>
+      <label for="su-oid">OID</label>
+      <input id="su-oid" name="su-oid" value="" type="text" >
+      <br>
+      <label for="su-username">UserName</label>
+      <input id="su-username" name="su-username" value="" type="text" >
+      <br>
+      <label for="su-comment">Comment</label>
+      <input id="su-comment" name="su-comment" value="" type="text" >
+      <br>
+      <button id="submitUI-btn" data-db="userinput">Post</button>
+    </form>
+  </div>
+
+  <script src="js/db-ajax.js"></script>
+
+</body>
