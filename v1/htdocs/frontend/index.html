@@ -53,6 +53,52 @@
         <a>©2022 Artjom Moisejev, Dominik Englert</a>
     </div>
 
+    <!--Add new Appointment Form (hidden/shown by JS)  Main Container-->
+    <div class="appointment-form" id="appointment-form">
+        <div class="appointment-form-title">
+            <div></div>
+            <!-- <i class="material-icons md-48">event</i> -->
+            <h2>Add new appointment</h2>
+            <i class="material-icons md-48" id="close_appointment_form">cancel</i>
+        </div>
+
+        <!--INPUT FIELDS-->
+        <div class="appointment-form-formular">
+            <h3>name of new appointment</h3>
+            <input type="text" id="appointment-name" placeholder="titel of the new appointment">
+            <h3>additional informations</h3>
+            <textarea id="appointment-info" placeholder="enter additional informations"></textarea>
+            <h3 class="date-time">select date and time</h3>
+            <input type="datetime-local" id="date">
+            <div id="add-date">add option</div>
+            <h3 class="date-time">selected spots</h3>
+            <div id="selected-dates"></div>
+        </div>
+
+        <div class="selected-dates-allignments">
+            <div class="time-options">
+
+                <!-- Dummy -->
+                <div class="dates-selected">
+                    <a class="month">Mär.</a>
+                    <a class="day">20</a>
+                    <a class="weekday">DI</a>
+                    <a class="time">15:00</a>
+                    <a class="time">16:00</a>
+                </div>
+
+            </div>
+        </div>
+        <div class="appointment-form-title">
+            <div></div>
+            <div id="submit-new-appointment">
+                submit
+            </div>
+        </div>
+
+
+    </div>
+
     <!-- Scripts -->
     <script src="../frontend/js/utils.js"></script>
     <script src="../frontend/js/ajaxDB.js"></script>
