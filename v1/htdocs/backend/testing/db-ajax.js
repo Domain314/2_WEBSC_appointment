@@ -1,8 +1,10 @@
 $(document).ready(function () {
   loaddata();
-  $("#submitApp-btn").click(function() { postData("appointments"); });
-  $("#submitOpt-btn").click(function() { postData("options"); });
-  $("#submitUI-btn").click(function() { postData("userinput"); });
+  let path = document.location.origin;
+  let directory = path + '/backend/php/businesslogic/serviceHandler.php';
+  $("#submitApp-btn").click(function() { ajaxAppointment(directory) });
+  $("#submitOpt-btn").click(function() { ajaxOption(directory) });
+  $("#submitUI-btn").click(function() { ajaxUserInput(directory) });
 });
 
 function loaddata() {
@@ -72,26 +74,9 @@ function loadUserInput() {
   );
 }
 
-function postData(db) {
-  // event.preventDefault();
-  let path = document.location.origin;
-  let directory = path + '/backend/php/businesslogic/serviceHandler.php';
-  switch (db) {
-    case "appointments":
-      ajaxAppointment(directory);
-      break;
-    case "options":
-      ajaxOption(directory);
-      break;
-    case "userinput":
-      ajaxUserInput(directory);
-      break;
-    default:
-
-  }
-}
 
 function ajaxAppointment(directory) {
+  event.preventDefault();
   $.ajax({
     type: "POST",
     url: directory,
@@ -100,6 +85,7 @@ function ajaxAppointment(directory) {
       db: "appointments",
       titel: $("#sa-title").val(),
       text: $("#sa-text").val(),
+      icon: $("#sa-icon").val(),
       place: $("#sa-place").val(),
       date: $("#sa-date").val(),
       time: $("#sa-time").val(),
@@ -112,11 +98,13 @@ function ajaxAppointment(directory) {
     },
     error: function (e) {
       console.log(e);
+      console.log(this);
     }
   });
 }
 
 function ajaxOption(directory) {
+  event.preventDefault();
   $.ajax({
     type: "POST",
     url: directory,
@@ -125,8 +113,9 @@ function ajaxOption(directory) {
       db: "options",
       aid: $("#so-aid").val(),
       titel: $("#so-titel").val(),
-      date: $("#sa-date").val(),
-      time: $("#sa-time").val()
+      date: $("#so-date").val(),
+      timeB: $("#so-timeB").val(),
+      timeE: $("#so-timeE").val()
     } ,
     success: function (response) {
       console.log("successs");
@@ -139,6 +128,7 @@ function ajaxOption(directory) {
 }
 
 function ajaxUserInput(directory) {
+  event.preventDefault();
   $.ajax({
     type: "POST",
     url: directory,

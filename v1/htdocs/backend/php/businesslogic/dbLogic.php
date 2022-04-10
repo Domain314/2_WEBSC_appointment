@@ -19,6 +19,8 @@ class DBLogic {
       case "queryAll":
         $res = $this->dh->queryAll($db);
         break;
+      case "queryOptions":
+        $res = $this->dh->queryOptions($param, $db);
 
       default:
         // code...

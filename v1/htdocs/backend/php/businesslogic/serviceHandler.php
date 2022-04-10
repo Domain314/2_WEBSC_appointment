@@ -7,6 +7,7 @@ include( $dir );
 // include($dir);
 
 $logic = new DBLogic();
+
 if (isset($_POST["db"])) {
   $result = $logic->postData($_POST["db"], handlePost());
   response("POST", 100, $result);
@@ -66,13 +67,14 @@ function handlePost() {
 function createAppointment() {
   $titel = isset($_POST["titel"]) ? $_POST["titel"] : false;
   $text = isset($_POST["text"]) ? $_POST["text"] : false;
+  $icon = isset($_POST["icon"]) ? $_POST["icon"] : false;
   $place = isset($_POST["place"]) ? $_POST["place"] : false;
   $date = isset($_POST["date"]) ? $_POST["date"] : false;
   $time = isset($_POST["time"]) ? $_POST["time"] : false;
   $expdate = isset($_POST["expdate"]) ? $_POST["expdate"] : false;
   $exptime = isset($_POST["exptime"]) ? $_POST["exptime"] : false;
   $apt = AppointmentFactory::create();
-  $apt->newAppointment($titel, $text, $place, $date, $time, $expdate,  $exptime);
+  $apt->newAppointment($titel, $text, $icon, $place, $date, $time, $expdate,  $exptime);
   return $apt;
 }
 
@@ -80,9 +82,10 @@ function createOption() {
   $aid = isset($_POST["aid"]) ? $_POST["aid"] : false;
   $titel = isset($_POST["titel"]) ? $_POST["titel"] : false;
   $date = isset($_POST["date"]) ? $_POST["date"] : false;
-  $time = isset($_POST["time"]) ? $_POST["time"] : false;
+  $timeB = isset($_POST["timeB"]) ? $_POST["timeB"] : false;
+  $timeE = isset($_POST["timeE"]) ? $_POST["timeE"] : false;
   $opt = OptionFactory::create();
-  $opt->newOption($aid, $titel, $date, $time);
+  $opt->newOption($aid, $titel, $date, $timeB, $timeE);
   return $opt;
 }
 

@@ -44,6 +44,16 @@ class DataHandler {
     return null;
   }
 
+  public function queryOptions($aid, $db) {
+    $dir = $_SERVER["DOCUMENT_ROOT"] . "/backend/php/db/dbaccess.php";
+    include($dir);
+    if ($stmt = $conn->prepare("SELECT * FROM " . $db . " WHERE aID=" . $aid)) {
+                $stmt->execute();
+                return $stmt->fetchAll();
+    }
+    return null;
+  }
+
   public function postData($db, $data) {
     switch ($db) {
       case 'appointments':
@@ -66,18 +76,20 @@ class DataHandler {
     $AID = rand(1000000, 9999999);
     $titel = $data->getTitel();
     $text = $data->getText();
+    $icon = $data->getIcon();
     $place = $data->getPlace();
     $sqlDate = $data->getDate();
     $sqlExpDate = $data->getExpDate();
     $dir = $_SERVER["DOCUMENT_ROOT"] . "/backend/php/db/dbaccess.php";
     include($dir);
-    if ($stmt = $conn->prepare("INSERT INTO appointments (aID,Titel,Text,Place,Date,Expiration) VALUES (?,?,?,?,?,?)")) {
+    if ($stmt = $conn->prepare("INSERT INTO appointments (aID,Titel,Text,Icon,Place,Date,Expiration) VALUES (?,?,?,?,?,?,?)")) {
                 $stmt->bindValue(1, $AID);
                 $stmt->bindValue(2, $titel);
                 $stmt->bindValue(3, $text);
-                $stmt->bindValue(4, $place);
-                $stmt->bindValue(5, $sqlDate);
-                $stmt->bindValue(6, $sqlExpDate);
+                $stmt->bindValue(4, $icon);
+                $stmt->bindValue(5, $place);
+                $stmt->bindValue(6, $sqlDate);
+                $stmt->bindValue(7, $sqlExpDate);
                 $stmt->execute();
     }
   }
@@ -87,14 +99,17 @@ class DataHandler {
     $OID = rand(100000, 999999);
     $titel = $data->getTitel();
     $sqlDate = $data->getDate();
-    error_log($sqlDate);
+    $timeB = $data->getTimeB();
+    $timeE = $data->getTimeE();
     $dir = $_SERVER["DOCUMENT_ROOT"] . "/backend/php/db/dbaccess.php";
     include($dir);
-    if ($stmt = $conn->prepare("INSERT INTO options (aID,oID,Titel,Date) VALUES (?,?,?,?)")) {
+    if ($stmt = $conn->prepare("INSERT INTO options (aID,oID,Titel,Date,timestart,timeend) VALUES (?,?,?,?,?,?)")) {
                 $stmt->bindValue(1, $AID);
                 $stmt->bindValue(2, $OID);
                 $stmt->bindValue(3, $titel);
                 $stmt->bindValue(4, $sqlDate);
+                $stmt->bindValue(5, $timeB);
+                $stmt->bindValue(6, $timeE);
                 $stmt->execute();
     }
   }
