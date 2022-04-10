@@ -10,4 +10,14 @@ $(document).ready(function () {
         $("#appointment-form").fadeIn(300);
         console.log("show appointment form");
     });
+    //SHOW STATS
+    $("#show-stats").on('click', function () {
+        $("#statistics").fadeIn(300);
+        console.log("show stats");
+    });
+    //HIDE STATS
+    $("#hide-stats").on('click', function () {
+        $("#statistics").fadeOut(300);
+        console.log("hide stats");
+    });
 });
