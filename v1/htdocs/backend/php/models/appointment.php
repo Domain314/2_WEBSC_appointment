@@ -10,16 +10,7 @@ class Appointment {
 
   function __construct() {}
 
-  public function newAppointment($titel, $text, $icon, $place, $date, $time, $expdate, $exptime) {
-    $this->titel = $titel;
-    $this->text = $text;
-    $this->icon = $icon;
-    $this->place = $place;
-    $this->date = date('Y-m-d H:i:s', strtotime($date . " " . $time));
-    $this->expdate = date('Y-m-d H:i:s', strtotime($expdate . " " . $exptime));
-  }
-
-  public function setAppointment($aid, $titel, $text, $icon, $place, $date, $expdate) {
+  public function newAppointment($aid, $titel, $text, $icon, $place, $date, $time, $expdate, $exptime) {
     $this->aid = $aid;
     $this->titel = $titel;
     $this->text = $text;

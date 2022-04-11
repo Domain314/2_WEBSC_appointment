@@ -73,7 +73,7 @@ class DataHandler {
   }
 
   private function postAppointment($data) {
-    $AID = rand(1000000, 9999999);
+    $AID = $data->getAid();
     $titel = $data->getTitel();
     $text = $data->getText();
     $icon = $data->getIcon();
@@ -95,23 +95,28 @@ class DataHandler {
   }
 
   private function postOption($data) {
-    $AID = $data->getAid();
-    $OID = rand(100000, 999999);
-    $titel = $data->getTitel();
-    $sqlDate = $data->getDate();
-    $timeB = $data->getTimeB();
-    $timeE = $data->getTimeE();
     $dir = $_SERVER["DOCUMENT_ROOT"] . "/backend/php/db/dbaccess.php";
     include($dir);
-    if ($stmt = $conn->prepare("INSERT INTO options (aID,oID,Titel,Date,timestart,timeend) VALUES (?,?,?,?,?,?)")) {
-                $stmt->bindValue(1, $AID);
-                $stmt->bindValue(2, $OID);
-                $stmt->bindValue(3, $titel);
-                $stmt->bindValue(4, $sqlDate);
-                $stmt->bindValue(5, $timeB);
-                $stmt->bindValue(6, $timeE);
-                $stmt->execute();
+
+    $sql = "INSERT INTO options (aID,oID,Titel,Date,timestart,timeend) VALUES (?,?,?,?,?,?) ";
+    $AID = $data[0]->getAid();
+    error_log($AID);
+    $titel = $data[0]->getTitel();
+
+    if ($stmt = $conn->prepare($sql)) {
+      $conn->beginTransaction();
+
+      foreach ($data as $value) {
+        $OID = rand(1000000, 9999999);
+        $sqlDate = $value->getDate();
+        $timeB = $value->getTimeB();
+        $timeE = $value->getTimeE();
+
+        $stmt->execute([ $AID, $OID, $titel, $sqlDate, $timeB, $timeE ]);
+      }
+      $conn->commit();
     }
+
   }
 
   private function postUserInput($data) {

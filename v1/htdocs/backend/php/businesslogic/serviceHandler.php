@@ -52,7 +52,7 @@ function handlePost() {
       $data = createAppointment();
       break;
     case 'options':
-      $data = createOption();
+      $data = createOptions();
       break;
     case 'userinput':
       $data = createUserInput();
@@ -65,28 +65,32 @@ function handlePost() {
 }
 
 function createAppointment() {
+  $aid = isset($_POST["aid"]) ? $_POST["aid"] : false;
   $titel = isset($_POST["titel"]) ? $_POST["titel"] : false;
   $text = isset($_POST["text"]) ? $_POST["text"] : false;
-  $icon = isset($_POST["icon"]) ? $_POST["icon"] : false;
-  $place = isset($_POST["place"]) ? $_POST["place"] : false;
+  $icon = isset($_POST["icon"]) ? $_POST["icon"] : 0;
+  $place = isset($_POST["place"]) ? $_POST["place"] : "";
   $date = isset($_POST["date"]) ? $_POST["date"] : false;
   $time = isset($_POST["time"]) ? $_POST["time"] : false;
   $expdate = isset($_POST["expdate"]) ? $_POST["expdate"] : false;
   $exptime = isset($_POST["exptime"]) ? $_POST["exptime"] : false;
   $apt = AppointmentFactory::create();
-  $apt->newAppointment($titel, $text, $icon, $place, $date, $time, $expdate,  $exptime);
+  $apt->newAppointment($aid, $titel, $text, $icon, $place, $date, $time, $expdate,  $exptime);
   return $apt;
 }
 
-function createOption() {
+function createOptions() {
+  $options = array();
   $aid = isset($_POST["aid"]) ? $_POST["aid"] : false;
   $titel = isset($_POST["titel"]) ? $_POST["titel"] : false;
-  $date = isset($_POST["date"]) ? $_POST["date"] : false;
-  $timeB = isset($_POST["timeB"]) ? $_POST["timeB"] : false;
-  $timeE = isset($_POST["timeE"]) ? $_POST["timeE"] : false;
-  $opt = OptionFactory::create();
-  $opt->newOption($aid, $titel, $date, $timeB, $timeE);
-  return $opt;
+
+  foreach ($_POST["selectedOptions"] as $value) {
+    $opt = OptionFactory::create();
+    $opt->newOption($aid, $titel, $value["date"], $value["timeStart"], $value["timeEnd"]);
+    array_push($options, $opt);
+  }
+
+  return $options;
 }
 
 function createUserInput() {

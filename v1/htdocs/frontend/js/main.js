@@ -3,15 +3,17 @@ var mode = "Appointments"
 
 // load on ready
 $(document).ready(function () {
-  $("#content-title").html(mode);
+
   setupAppointments();
 
-  $("#appointment-form").hide();
-
-
-
-
 });
+
+// to-do: reload page, instead going back
+// $(function() {
+//  $(window).bind('hashchange', function() {
+//    console.log('clicked back');
+//  }).trigger('hashchange');
+// });
 
 
 // send request
@@ -27,17 +29,22 @@ function loadOptions(id) {
 // triggered within request-success
 // prepare container and fill with utils.js -> constructAppointment()
 function buildAppointments(response) {
+  $("#content-title").html("Appointments");
+
   $(".main")[0].children[1].remove();
   $(".main").append("<div class='appointments'></div>");
 
-  $(response).each(function(index) {
-    $(".appointments").append( constructAppointment(
-        response[index][0],
-        getGoogleIconString(response[index][3]),
-        response[index][1],
-        response[index][2]
-      ));
-  });
+  if (response != null) {
+    $(response).each(function(index) {
+      $(".appointments").append( constructAppointment(
+          response[index][0],
+          getGoogleIconString(response[index][3]),
+          response[index][1],
+          response[index][2]
+        ));
+    });
+  }
+
 
   $(".appointments").append( constructAddNewAppointment() );
 
@@ -57,6 +64,7 @@ function buildAppointments(response) {
 // triggered within request-success
 // prepare container and fill with utils.js -> constructOption()
 function buildOptions(response) {
+  $("#content-title").html(response[0][2]);
   $(".main")[0].children[1].remove();
   $(".main").append("<div class='picker-allignment'><div class='time-options'><label for='comments' class='label'>Your Name</label><input type='text' placeholder='your name' id='name'>");
 
@@ -68,5 +76,16 @@ function buildOptions(response) {
         response[index][5]
       ));
   });
-  $(".main").append("<label for='comments' class='label'>Comments</label><input type='text' id='comments' placeholder='enter your comments here'><button id='submit'>Submit</button></div></div>");
+  $(".main").append("<label for='comments' class='label'>Comments</label><input type='text' id='comments' placeholder='enter your comments here'><button id='submit'>Submit</button><button id='show-stats'>Show Stats</button></div></div>");
+
+  //SHOW STATS
+  $("#show-stats").on('click', function () {
+      $("#statistics").fadeIn(300);
+      console.log("show stats");
+  });
+  //HIDE STATS
+  $("#hide-stats").on('click', function () {
+      $("#statistics").fadeOut(300);
+      console.log("hide stats");
+  });
 }

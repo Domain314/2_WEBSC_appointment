@@ -20,7 +20,7 @@ class AjaxDB {
         buildAppointments(response);
 
       },
-      error: function() { window.alert("connection error"); }
+      error: buildAppointments(null),
     });
   }
 
@@ -47,7 +47,7 @@ class AjaxDB {
       url: this.directory,
       cache: false,
       dataType: "json",
-      data: {method: "queryAll", db: "userinput", },
+      data: { method: "queryAll", db: "userinput", },
       success: function (response) {
 
         // $(response).each(function(index) {
@@ -62,55 +62,67 @@ class AjaxDB {
 
   // POST DATA
 
-  ajaxAppointment(directory) {
+  ajaxAppointment(appointment) {
     event.preventDefault();
     $.ajax({
       method: "POST",
       url: this.directory,
       cache: false,
-      data: {
-        db: "appointments",
-        titel: $("#sa-title").val(),
-        text: $("#sa-text").val(),
-        place: $("#sa-place").val(),
-        date: $("#sa-date").val(),
-        time: $("#sa-time").val(),
-        expdate: $("#sa-expdate").val(),
-        exptime: $("#sa-exptime").val()
-      } ,
+      data: appointment,
       success: function (response) {
         console.log("successs");
-        loadAppointments();
+        submitAllOptions();
       },
       error: function (e) {
-        console.log("error");
+        window.alert("Error: Appointment");
         console.log(e);
       }
     });
   }
 
-  ajaxOption(directory) {
-    event.preventDefault();
+  ajaxOptions(aid, titel, selectedOptions) {
     $.ajax({
       type: "POST",
       url: this.directory,
       cache: false,
       data: {
         db: "options",
-        aid: $("#so-aid").val(),
-        titel: $("#so-titel").val(),
-        date: $("#so-date").val(),
-        time: $("#so-time").val()
-      } ,
+        aid: aid,
+        titel: titel,
+        selectedOptions: selectedOptions
+      },
       success: function (response) {
-        console.log("successs");
-        loadOptions();
+        endOfAnimation();
       },
       error: function (e) {
+        window.alert("Error: Options");
         console.log(e);
       }
     });
   }
+
+  // ajaxOption(directory) {
+  //   event.preventDefault();
+  //   $.ajax({
+  //     type: "POST",
+  //     url: this.directory,
+  //     cache: false,
+  //     data: {
+  //       db: "options",
+  //       aid: $("#so-aid").val(),
+  //       // titel: $("#so-titel").val(),
+  //       date: $("#so-date").val(),
+  //       time: $("#so-time").val()
+  //     } ,
+  //     success: function (response) {
+  //       window.confirm("success");
+  //       window.location.reload();
+  //     },
+  //     error: function (e) {
+  //       console.log(e);
+  //     }
+  //   });
+  // }
 
   ajaxUserInput(directory) {
     event.preventDefault();

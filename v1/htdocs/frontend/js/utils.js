@@ -35,10 +35,13 @@ function constructAppointment(id, googleIcon, title, text) {
   return div;
 };
 
-
+// oid == 0, if function gets called from addAppointment.js
+// oid != 0, if function gets called from main.js
 function constructOption(oid, date, timeB, timeE) {
   let div = document.createElement("div");
-  div.classList.add("dates");
+
+  if (oid == 0) { div.classList.add("dates-selected"); }
+  else { div.classList.add("dates"); }
 
   let newDate = new Date(date);
   let month = document.createElement("a");
@@ -66,11 +69,15 @@ function constructOption(oid, date, timeB, timeE) {
   input.id = "oid";
   input.value = oid;
 
-  let checkbox = document.createElement("input");
-  checkbox.type = "checkbox";
-  checkbox.classList = "checkbox";
+  if (oid != 0) {
+    let checkbox = document.createElement("input");
+    checkbox.type = "checkbox";
+    checkbox.classList = "checkbox";
+    div.append(month, day, weekday, timeStart, timeEnd, input, checkbox);
+  } else {
+    div.append(month, day, weekday, timeStart, timeEnd, input);
+  }
 
-  div.append(month, day, weekday, timeStart, timeEnd, input, checkbox);
   // div.addEventListener("click", function() { loadOptions(id); }, false);
   return div;
 };
