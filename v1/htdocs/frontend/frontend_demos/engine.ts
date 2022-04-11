@@ -3,8 +3,6 @@
 
 $(document).ready(function() {
 
-    
-
     //CLOSE NEW APPOINTMENT FORM
     $("#close_appointment_form").on('click', function () {
         $("#appointment-form").fadeOut(300);
