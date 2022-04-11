@@ -120,17 +120,25 @@ class DataHandler {
   }
 
   private function postUserInput($data) {
-    $OID = $data->getOid();
-    $username = $data->getUserName();
-    $comment = $data->getComment();
     $dir = $_SERVER["DOCUMENT_ROOT"] . "/backend/php/db/dbaccess.php";
     include($dir);
-    if ($stmt = $conn->prepare("INSERT INTO userinput (oID,Username,Comment) VALUES (?,?,?)")) {
-                $stmt->bindValue(1, $OID);
-                $stmt->bindValue(2, $username);
-                $stmt->bindValue(3, $comment);
-                $stmt->execute();
+
+    $sql = "INSERT INTO userinput (oID,Username,Comment) VALUES (?,?,?) ";
+
+    $username = $data[0]->getUserName();
+    $comment = $data[0]->getComment();
+
+    if ($stmt = $conn->prepare($sql)) {
+      $conn->beginTransaction();
+
+      foreach ($data as $value) {
+        $OID = $value->getOid();
+        
+        $stmt->execute([ $OID, $username, $comment ]);
+      }
+      $conn->commit();
     }
+
   }
 
 

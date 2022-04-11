@@ -74,7 +74,6 @@ class AjaxDB {
         success: function (response) {
           console.log("successs");
           submitAllOptions();
-          event.preventDefault();
         },
         error: function (e) {
           submitAllOptions();
@@ -105,30 +104,8 @@ class AjaxDB {
     });
   }
 
-  // ajaxOption(directory) {
-  //   event.preventDefault();
-  //   $.ajax({
-  //     type: "POST",
-  //     url: this.directory,
-  //     cache: false,
-  //     data: {
-  //       db: "options",
-  //       aid: $("#so-aid").val(),
-  //       // titel: $("#so-titel").val(),
-  //       date: $("#so-date").val(),
-  //       time: $("#so-time").val()
-  //     } ,
-  //     success: function (response) {
-  //       window.confirm("success");
-  //       window.location.reload();
-  //     },
-  //     error: function (e) {
-  //       console.log(e);
-  //     }
-  //   });
-  // }
 
-  ajaxUserInput(directory) {
+  ajaxUserInput(oids, userName, comment) {
     event.preventDefault();
     $.ajax({
       type: "POST",
@@ -136,16 +113,17 @@ class AjaxDB {
       cache: false,
       data: {
         db: "userinput",
-        oid: $("#su-oid").val(),
-        username: $("#su-username").val(),
-        comment: $("#su-comment").val()
+        oid: oids,
+        username: userName,
+        comment: comment
       } ,
       success: function (response) {
         console.log("successs");
-        loadUserInput();
+        endOfAnimation();
       },
       error: function (e) {
-        console.log(e);
+        endOfAnimation();
+        // console.log(e);
       }
     });
   }

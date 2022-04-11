@@ -94,12 +94,17 @@ function createOptions() {
 }
 
 function createUserInput() {
-  $oid = isset($_POST["oid"]) ? $_POST["oid"] : false;
+  $oids = array(); //isset($_POST["oid"]) ? $_POST["oid"] : false;
   $username = isset($_POST["username"]) ? $_POST["username"] : false;
   $comment = isset($_POST["comment"]) ? $_POST["comment"] : false;
-  $uin = UserInputFactory::create();
-  $uin->newUserInput($oid, $username, $comment);
-  return $uin;
+
+  foreach ($_POST["oid"] as $value) {
+    $oid = UserInputFactory::create();
+    $oid->newUserInput($value, $username, $comment);
+    array_push($oids, $oid);
+  }
+
+  return $oids;
 }
 
 

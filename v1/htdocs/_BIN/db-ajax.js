@@ -124,6 +124,30 @@ function ajaxOption(directory) {
   });
 }
 
+
+  // ajaxOption(directory) {
+  //   event.preventDefault();
+  //   $.ajax({
+  //     type: "POST",
+  //     url: this.directory,
+  //     cache: false,
+  //     data: {
+  //       db: "options",
+  //       aid: $("#so-aid").val(),
+  //       // titel: $("#so-titel").val(),
+  //       date: $("#so-date").val(),
+  //       time: $("#so-time").val()
+  //     } ,
+  //     success: function (response) {
+  //       window.confirm("success");
+  //       window.location.reload();
+  //     },
+  //     error: function (e) {
+  //       console.log(e);
+  //     }
+  //   });
+  // }
+
 function ajaxUserInput(directory) {
   event.preventDefault();
   $.ajax({
