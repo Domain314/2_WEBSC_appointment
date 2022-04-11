@@ -32,7 +32,9 @@ function addDate() {
 
   // set expiration date to earliest date
   if (getEarliestOption() == selectedOptions.length-1) {
-    $("#end-date").val(String(optionDate + " " + optionTimeStart));
+    
+    // chrome
+    $("#end-date").val(String(optionDate + "T" + optionTimeStart));
   }
 }
 

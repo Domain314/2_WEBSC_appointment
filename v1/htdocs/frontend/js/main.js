@@ -1,6 +1,13 @@
 var ajaxDB = new AjaxDB();
 var mode = "Appointments"
 
+// ajax error skipping
+// $(document).ajaxError(function(e, jqxhr, settings, exception) {
+//   if (jqxhr.readyState == 0 || jqxhr.status == 0) {
+//     return; //Skip this error
+//   }
+// });
+
 // load on ready
 $(document).ready(function () {
 
@@ -87,5 +94,12 @@ function buildOptions(response) {
   $("#hide-stats").on('click', function () {
       $("#statistics").fadeOut(300);
       console.log("hide stats");
+  });
+
+  //SUBMIT
+  $("#submit").on('click', function () {
+      console.log("submit");
+      submitUserVote();
+
   });
 }

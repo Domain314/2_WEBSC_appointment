@@ -64,20 +64,24 @@ class AjaxDB {
 
   ajaxAppointment(appointment) {
     event.preventDefault();
-    $.ajax({
-      method: "POST",
-      url: this.directory,
-      cache: false,
-      data: appointment,
-      success: function (response) {
-        console.log("successs");
-        submitAllOptions();
-      },
-      error: function (e) {
-        window.alert("Error: Appointment");
-        console.log(e);
-      }
-    });
+    // setTimeout(function() {
+      $.ajax({
+        method: "POST",
+        url: this.directory,
+        cache: false,
+        async: true,
+        data: appointment,
+        success: function (response) {
+          console.log("successs");
+          submitAllOptions();
+          event.preventDefault();
+        },
+        error: function (e) {
+          submitAllOptions();
+          // console.log(e);
+        }
+      });
+    // }, 0);
   }
 
   ajaxOptions(aid, titel, selectedOptions) {
@@ -95,8 +99,8 @@ class AjaxDB {
         endOfAnimation();
       },
       error: function (e) {
-        window.alert("Error: Options");
-        console.log(e);
+        endOfAnimation();
+        // console.log(e);
       }
     });
   }

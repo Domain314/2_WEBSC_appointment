@@ -73,6 +73,7 @@ function constructOption(oid, date, timeB, timeE) {
     let checkbox = document.createElement("input");
     checkbox.type = "checkbox";
     checkbox.classList = "checkbox";
+    checkbox.value = oid;
     div.append(month, day, weekday, timeStart, timeEnd, input, checkbox);
   } else {
     div.append(month, day, weekday, timeStart, timeEnd, input);
