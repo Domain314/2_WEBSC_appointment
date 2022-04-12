@@ -39,6 +39,7 @@ function addDate() {
 
 function setEarliestEndDate() {
   let earlyIndex = getEarliestOption();
+  if (earlyIndex == -1) { return; }
   let earlyDate = selectedOptions[earlyIndex]["date"];
   let earlyTime = selectedOptions[earlyIndex]["timeStart"];
   // chrome: "T" instead " "
