@@ -1,5 +1,5 @@
 var ajaxDB = new AjaxDB();
-var mode = "Appointments"
+var mode = "Appointments";
 var optionIDs = new Array();
 
 // ajax error skipping
@@ -26,10 +26,12 @@ $(document).ready(function () {
 
 // send request
 function setupAppointments() {
+  var mode = "Appointments";
   ajaxDB.loadAppointments();
 }
 // send request
 function loadOptions(id) {
+  var mode = "Options";
   ajaxDB.loadOptions(id);
 }
 
@@ -38,6 +40,7 @@ function loadOptions(id) {
 // prepare container and fill with utils.js -> constructAppointment()
 function buildAppointments(response) {
   $("#content-title").html("Appointments");
+  $("#close-appointment-picker").hide();
 
   $(".main")[0].children[1].remove();
   $(".main").append("<div class='appointments'></div>");
@@ -73,6 +76,11 @@ function buildAppointments(response) {
 // prepare container and fill with utils.js -> constructOption()
 function buildOptions(response) {
   $("#content-title").html(response[0][2]);
+  $("#close-appointment-picker").show();
+  $("#close-appointment-picker").on('click', function () {
+    window.location.reload();
+  });
+
   $(".main")[0].children[1].remove();
   $(".main").append("<div class='picker-allignment'><div class='time-options'><label for='comments' class='label'>Your Name</label><input type='text' placeholder='your name' id='name'>");
 
@@ -86,7 +94,7 @@ function buildOptions(response) {
   });
   $(".main").append("<label for='comments' class='label'>Comments</label><input type='text' id='comments' placeholder='enter your comments here'><button id='submit'>Submit</button><button id='show-stats'>Show Stats</button></div></div>");
 
-  //SHOW/HIDE STATS 
+  //SHOW/HIDE STATS
   $("#show-stats").on('click', function () {
       if ($("#statistics").is(":visible")) {
         $("#statistics").fadeOut(300);
@@ -129,4 +137,9 @@ function buildStats(response) {
   });
 
   requestStats();
+}
+
+function endOfAnimation() {
+  window.confirm("success");
+  window.location.reload();
 }

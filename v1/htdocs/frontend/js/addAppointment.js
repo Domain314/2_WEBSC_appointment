@@ -1,6 +1,7 @@
 var selectedOptions = new Array();
 var aid = 0;
 var titel = "";
+var useEarliestDate = true;
 
 // load on ready
 $(document).ready(function () {
@@ -31,11 +32,17 @@ function addDate() {
   $("#selected-dates.time-options").append(constructOption(0, optionDate, optionTimeStart, optionTimeEnd));
 
   // set expiration date to earliest date
-  if (getEarliestOption() == selectedOptions.length-1) {
-    
-    // chrome
-    $("#end-date").val(String(optionDate + "T" + optionTimeStart));
+  if (useEarliestDate) {
+    setEarliestEndDate();
   }
+}
+
+function setEarliestEndDate() {
+  let earlyIndex = getEarliestOption();
+  let earlyDate = selectedOptions[earlyIndex]["date"];
+  let earlyTime = selectedOptions[earlyIndex]["timeStart"];
+  // chrome: "T" instead " "
+  $("#end-date").val(String(earlyDate + "T" + earlyTime));
 }
 
 
@@ -48,16 +55,23 @@ function submitNewAppointment() {
   }
 
   let appointmentTitel = titel = $("#appointment-name").val();
+  if (typeof(appointmentTitel) == "undefined" || appointmentTitel == "") {
+    window.confirm("Enter a Titel for your Appointment.");
+    return;
+  }
+
   let appointmentText = $("#appointment-info").val();
   // let appointmentPlace = $("appointment-place").val();
   let appointmentDate = selectedOptions[earliestIndex]["date"];
   let appointmentTime = selectedOptions[earliestIndex]["timeStart"];
-  let appointmentExpDate = selectedOptions[earliestIndex]["date"];
-  let appointmentExpTime = selectedOptions[earliestIndex]["timeStart"];
 
-  if (typeof(appointmentTitel) == "undefined") {
-    window.confirm("Enter a Titel for your Appointment.");
-    return;
+  let appointmentExpDate, appointmentExpTime;
+  if (useEarliestDate) {
+    appointmentExpDate = selectedOptions[earliestIndex]["date"];
+    appointmentExpTime = selectedOptions[earliestIndex]["timeStart"];
+  } else {
+    appointmentExpDate = $("#end-date").val().split("T")[0];
+    appointmentExpTime = $("#end-date").val().split("T")[1];
   }
 
   aid = getRandomArbitrary(1000000, 9999999);
@@ -94,9 +108,15 @@ function getEarliestOption() {
   return indexEarliest;
 }
 
-function endOfAnimation() {
-  window.confirm("success");
-  window.location.reload();
+function earliestCheckBox() {
+  useEarliestDate = $("#earliestOption").prop("checked");
+  if (useEarliestDate) {
+    $("#end-date").hide();
+  } else {
+    setEarliestEndDate();
+    $("#end-date").fadeIn(500);
+
+  }
 }
 
 function getRandomArbitrary(min, max) {

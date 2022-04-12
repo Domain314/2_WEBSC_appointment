@@ -52,6 +52,7 @@ function initializeStats(response) {
 
         if (responseValue[0] == optionValue && responseValue[1] == nameValue) {
           row += "<i class='material-icons md-24' id='close-statistics'>done</i>";
+          return false;
         }
       });
 

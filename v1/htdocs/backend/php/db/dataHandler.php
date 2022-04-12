@@ -58,6 +58,7 @@ class DataHandler {
     $dir = $_SERVER["DOCUMENT_ROOT"] . "/backend/php/db/dbaccess.php";
     include($dir);
 
+    // sleep(2);
     $sql = "SELECT * FROM userinput WHERE ";
 
     foreach ($oid as $key => $value) {

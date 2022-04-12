@@ -30,6 +30,8 @@
         <div class="container">
             <!--content container-->
             <h2 id="content-title"></h2>
+            <div></div>
+            <i class="material-icons md-48" id="close-appointment-picker">cancel</i>
             <div class="line"></div>
         </div>
 
@@ -100,7 +102,7 @@
             <a>select first appointment date as end date</a>
             <label class="switch">
 
-                <input type="checkbox" id="earliestOption" checked>
+                <input type="checkbox" id="earliestOption" checked onclick='earliestCheckBox();' id=chk accesskey=c>
                 <span class="slider round"></span>
             </label>
             <div>
