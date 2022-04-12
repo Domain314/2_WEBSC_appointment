@@ -8,6 +8,9 @@ include( $dir );
 
 $logic = new DBLogic();
 
+// $testarray = array("6399424");
+// $logic->handleRequest("queryAll", $testarray ,"userinput");
+
 if (isset($_POST["db"])) {
   $result = $logic->postData($_POST["db"], handlePost());
   response("POST", 100, $result);

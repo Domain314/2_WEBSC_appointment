@@ -54,6 +54,26 @@ class DataHandler {
     return null;
   }
 
+  public function queryUserVoting($oid, $db) {
+    $dir = $_SERVER["DOCUMENT_ROOT"] . "/backend/php/db/dbaccess.php";
+    include($dir);
+
+    $sql = "SELECT * FROM userinput WHERE ";
+
+    foreach ($oid as $key => $value) {
+      $sql .= " oID = " . $value . " OR ";
+    }
+    $sql .= "oID = 0";
+
+    error_log("sql: " . $sql);
+
+    if ($stmt = $conn->prepare($sql)) {
+                $stmt->execute();
+                return $stmt->fetchAll();
+    }
+    return null;
+  }
+
   public function postData($db, $data) {
     switch ($db) {
       case 'appointments':
@@ -133,7 +153,7 @@ class DataHandler {
 
       foreach ($data as $value) {
         $OID = $value->getOid();
-        
+
         $stmt->execute([ $OID, $username, $comment ]);
       }
       $conn->commit();

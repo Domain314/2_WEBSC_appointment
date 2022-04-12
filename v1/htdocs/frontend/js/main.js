@@ -1,5 +1,6 @@
 var ajaxDB = new AjaxDB();
 var mode = "Appointments"
+var optionIDs = new Array();
 
 // ajax error skipping
 // $(document).ajaxError(function(e, jqxhr, settings, exception) {
@@ -85,21 +86,47 @@ function buildOptions(response) {
   });
   $(".main").append("<label for='comments' class='label'>Comments</label><input type='text' id='comments' placeholder='enter your comments here'><button id='submit'>Submit</button><button id='show-stats'>Show Stats</button></div></div>");
 
-  //SHOW STATS
+  //SHOW/HIDE STATS 
   $("#show-stats").on('click', function () {
-      $("#statistics").fadeIn(300);
-      console.log("show stats");
-  });
-  //HIDE STATS
-  $("#hide-stats").on('click', function () {
-      $("#statistics").fadeOut(300);
-      console.log("hide stats");
+      if ($("#statistics").is(":visible")) {
+        $("#statistics").fadeOut(300);
+        console.log("hide stats");
+      } else {
+        $("#statistics").fadeIn(300);
+        console.log("show stats");
+      }
   });
 
   //SUBMIT
   $("#submit").on('click', function () {
       console.log("submit");
       submitUserVote();
-
   });
+
+  buildStats(response);
+}
+
+function buildStats(response) {
+  $("body").append("<div class='statistics' id='statistics' style='display:none'><div class='statistics-title' id='statistics-title'><h2>Statistics</h2></div><table class='statistics-table'  id='statistics-table'></table><button id='hide-stats'>Done</button></div>");
+
+  $("#statistics-table").append("<tr class='table-top' id='table-top'></tr><tr class='table-time' id='table-time-start'></tr><tr class='table-time' id='table-time-end'></tr>");
+
+  $("#table-top").append("<td>Name</td>");
+  $("#table-time-start").append("<td></td>");
+  $("#table-time-end").append("<td></td>");
+
+  $(response).each(function(index, value) {
+    $("#table-top").append("<td>"+value[3].split('-')[2]+"."+value[3].split('-')[1]+"</td>");
+    $("#table-time-start").append("<td>"+value[4].split(':')[0]+"."+value[4].split(':')[1]+"</td>");
+    $("#table-time-end").append("<td>"+value[5].split(':')[0]+"."+value[5].split(':')[1]+"</td>");
+    optionIDs.push(value[1]);
+  });
+
+  //HIDE STATS
+  $("#hide-stats").on('click', function () {
+      $("#statistics").fadeOut(300);
+      console.log("hide stats");
+  });
+
+  requestStats();
 }

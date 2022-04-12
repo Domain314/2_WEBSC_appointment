@@ -40,20 +40,16 @@ class AjaxDB {
     });
   }
 
-  loadUserInput() {
-    $("#ol-userinput > .entry").remove();
+  loadUserInput(oids) {
     $.ajax({
       type: "GET",
       url: this.directory,
       cache: false,
       dataType: "json",
-      data: { method: "queryAll", db: "userinput", },
+      data: { method: "queryUserVoting", db: "userinput", param: oids, },
       success: function (response) {
 
-        // $(response).each(function(index) {
-        //   $("#ol-userinput").prepend(
-        //   "<li class='entry'>" + response[index][0] + ": " + response[index][1] + " " + response[index][2] + "</li>");
-        // });
+        initializeStats(response);
       }
     }
     );

@@ -21,7 +21,10 @@ class DBLogic {
         break;
       case "queryOptions":
         $res = $this->dh->queryOptions($param, $db);
-
+        break;
+      case "queryUserVoting":
+        $res = $this->dh->queryUserVoting($param, $db);
+        break;
       default:
         // code...
         break;
