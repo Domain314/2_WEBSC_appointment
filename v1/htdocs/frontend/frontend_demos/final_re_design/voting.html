@@ -1,0 +1,256 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="styling/stylings.css">
+    <!-- <link rel="stylesheet" href="formstyling.css"> -->
+    <link rel="stylesheet" href="styling/colors.css">
+    <link rel="stylesheet" href="styling/voting.css">
+
+    <!--Google Icons-->
+    <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+
+    <!--Google Fonts-->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Prompt:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Roboto+Mono:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;1,100;1,200;1,300;1,400;1,500;1,600;1,700&display=swap"
+        rel="stylesheet">
+
+    <script src="https://code.jquery.com/jquery-3.6.0.js"
+        integrity="sha256-H+K7U5CnXl1h5ywQfKtSj8PCmoN9aaq30gDh27Xc0jk=" crossorigin="anonymous"></script>
+
+    <title>Dooodle</title>
+</head>
+
+<body>
+
+    <!--Full header-Span-->
+    <div id="header">
+        <!--Logo+Title-->
+        <div class="logo">
+            <i class="material-icons md-36 logo-icon">data_usage</i>
+            <h1>Dooodle</h1>
+        </div>
+        <!--Button für new Appointment in header-->
+        <div class="add-new-appointment" id="add-new-appointment">
+            <i class="material-icons md-36">add_circle_outline</i>
+            <p>add new</p>
+        </div>
+
+    </div>
+
+    <!--Main-Content between header and Footer-->
+    <div id="mainpage-content">
+        <!--container which only holds the single-appointments-->
+        
+        <div id="vote-appointment-container">
+
+            <!--Formular itself-->
+            <div id="vote-appointment-formular">
+                <!--Button to go up-->
+                <div id="go-back">
+                    <i class="material-icons md-36">cancel</i>
+                </div>
+    
+                <!--container holding title-name and info-->
+                <div id="title-name-comments">
+                    <h1>Appointment Name</h1>
+                    <p>Name</p>
+                    <input type="text" id="new-name-input" placeholder="enter your name here...">
+                    <p>Comments</p>
+                    <input id="additional-informations" placeholder="add additional informations...">
+                </div>
+    
+                <!--view with added dates-->
+                <div id="added-dates">
+                    <div class="time-options" id="selected-dates">
+                        <!-- Dummy -->
+                        <div class="dates-selected">
+                            <a class="month">Mär.</a>
+                            <a class="day">20</a>
+                            <a class="weekday">DI</a>
+                            <a class="time">15:00</a>
+                            <a class="time">16:00</a>
+                            <input type="checkbox" id="checkbox">
+                        </div>
+                        <div class="dates-selected">
+                            <a class="month">Mär.</a>
+                            <a class="day">20</a>
+                            <a class="weekday">DI</a>
+                            <a class="time">15:00</a>
+                            <a class="time">16:00</a>
+                            <input type="checkbox" id="checkbox">
+                        </div>
+                        <div class="dates-selected">
+                            <a class="month">Mär.</a>
+                            <a class="day">20</a>
+                            <a class="weekday">DI</a>
+                            <a class="time">15:00</a>
+                            <a class="time">16:00</a>
+                            <input type="checkbox" id="checkbox">
+                        </div>
+                        <div class="dates-selected">
+                            <a class="month">Mär.</a>
+                            <a class="day">20</a>
+                            <a class="weekday">DI</a>
+                            <a class="time">15:00</a>
+                            <a class="time">16:00</a>
+                            <input type="checkbox" id="checkbox">
+                        </div>
+                    </div>
+                </div>
+    
+                <!--Submit Button-->
+                <div <div id="submit-new-vote">
+                    <button id="show-stats">Show Stats</button>
+                    <button id="submit-new-vote-button">Submit</button>
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+    <!--STATISTICS HTML-->
+    <!--STATS DIV ( BY DEFAULT HIDDEN )-->
+    <div class="statistics" id="statistics">
+        <!--title statistics-->
+        <div class="statistics-title" id="statistics-title">
+            <h2>Statistics</h2>
+        </div>
+
+        <!--statistics table-->
+        <table class="statistics-table" id="statistics-table">
+            <tr class="table-top" id='table-top'>
+                <td>Name</td>
+                <td>21.03.</td>
+                <td>21.03.</td>
+                <td>21.03.</td>
+                <td>21.03.</td>
+                <td>21.03.</td>
+                <td>21.03.</td>
+                <td>21.03.</td>
+                <td>21.03.</td>
+                <td>21.03.</td>
+                <td>21.03.</td>
+                <td>21.03.</td>
+            </tr>
+            <tr class="table-time" id="table-time-start">
+                <td></td>
+                <td>15:00</td>
+                <td>15:00</td>
+                <td>15:00</td>
+                <td>15:00</td>
+                <td>15:00</td>
+                <td>15:00</td>
+                <td>15:00</td>
+                <td>15:00</td>
+                <td>15:00</td>
+                <td>15:00</td>
+                <td>15:00</td>
+            </tr>
+            <tr class="table-time" id="table-time-end">
+                <td></td>
+                <td>16:00</td>
+                <td>16:00</td>
+                <td>16:00</td>
+                <td>16:00</td>
+                <td>16:00</td>
+                <td>16:00</td>
+                <td>16:00</td>
+                <td>16:00</td>
+                <td>16:00</td>
+                <td>16:00</td>
+                <td>16:00</td>
+            </tr>
+
+            <tr class="table-data" id="table-data">
+                <td>Dominik</td>
+                <td><i class="material-icons md-24" id="close-statistics">done</i></td>
+                <td><i class="material-icons md-24" id="close-statistics">done</i></td>
+                <td><i class="material-icons md-24" id="close-statistics">done</i></td>
+                <td><i class="material-icons md-24" id="close-statistics">done</i></td>
+                <td><i class="material-icons md-24" id="close-statistics">done</i></td>
+                <td><i class="material-icons md-24" id="close-statistics">done</i></td>
+                <td><i class="material-icons md-24" id="close-statistics">done</i></td>
+                <td><i class="material-icons md-24" id="close-statistics">done</i></td>
+                <td><i class="material-icons md-24" id="close-statistics">done</i></td>
+                <td><i class="material-icons md-24" id="close-statistics">done</i></td>
+                <td><i class="material-icons md-24" id="close-statistics">done</i></td>
+            </tr>
+
+            <tr class="table-data" id="table-data">
+                <td>Artjom</td>
+                <td><i class="material-icons md-24" id="close-statistics">done</i></td>
+                <td></td>
+                <td></td>
+                <td><i class="material-icons md-24" id="close-statistics">done</i></td>
+                <td><i class="material-icons md-24" id="close-statistics">done</i></td>
+                <td></td>
+                <td><i class="material-icons md-24" id="close-statistics">done</i></td>
+                <td><i class="material-icons md-24" id="close-statistics">done</i></td>
+                <td><i class="material-icons md-24" id="close-statistics">done</i></td>
+                <td></td>
+                <td><i class="material-icons md-24" id="close-statistics">done</i></td>
+            </tr>
+
+            <tr class="table-data" id="table-data">
+                <td>Lu</td>
+                <td><i class="material-icons md-24" id="close-statistics">done</i></td>
+                <td></td>
+                <td><i class="material-icons md-24" id="close-statistics">done</i></td>
+                <td></td>
+                <td></td>
+                <td><i class="material-icons md-24" id="close-statistics">done</i></td>
+                <td></td>
+                <td><i class="material-icons md-24" id="close-statistics">done</i></td>
+                <td></td>
+                <td></td>
+                <td><i class="material-icons md-24" id="close-statistics">done</i></td>
+            </tr>
+
+            <tr class="table-data" id="table-data">
+                <td>Hofstetter</td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+            </tr>
+
+            <tr class="table-data" id="table-data">
+                <td>Madeleine</td>
+                <td><i class="material-icons md-24" id="close-statistics">done</i></td>
+                <td></td>
+                <td></td>
+                <td><i class="material-icons md-24" id="close-statistics">done</i></td>
+                <td><i class="material-icons md-24" id="close-statistics">done</i></td>
+                <td></td>
+                <td><i class="material-icons md-24" id="close-statistics">done</i></td>
+                <td><i class="material-icons md-24" id="close-statistics">done</i></td>
+                <td><i class="material-icons md-24" id="close-statistics">done</i></td>
+                <td></td>
+                <td><i class="material-icons md-24" id="close-statistics">done</i></td>
+            </tr>
+
+        </table>
+
+        <button id="hide-stats">Done</button>
+    </div>
+    <!--END OF STATISTICS-->
+    
+
+    <!--Footer-->
+    <div id="footer">
+        <p>©2022 Artjom Moisejev, Dominik Englert</p>
+        <p>Imprint</p>
+    </div>
+
+    <script src="script/animation.js"></script>
+</body>
+
+</html>
