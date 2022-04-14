@@ -1,0 +1,570 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="styling.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"
+        integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="//code.jquery.com/ui/1.13.1/themes/base/jquery-ui.css">
+    <script src="https://code.jquery.com/jquery-3.6.0.js"
+        integrity="sha256-H+K7U5CnXl1h5ywQfKtSj8PCmoN9aaq30gDh27Xc0jk=" crossorigin="anonymous"></script>
+
+    <link
+        href="https://fonts.googleapis.com/css2?family=Prompt:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Roboto+Mono:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;1,100;1,200;1,300;1,400;1,500;1,600;1,700&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+    <title>Dooodle</title>
+</head>
+
+<body>
+    <div class="title">
+        <!--title only-->
+        <img class="logo" src="doole_logo.png" width="100px" height="70px">
+        <h1>Dooodle</h1>
+    </div>
+
+    <div class="main">
+        <!--white box container-->
+        <div class="continer">
+            <!--content container-->
+            <h2>Title Appointment</h2>
+            <div></div>
+            <i class="material-icons md-48" id="close-appointment-picker">cancel</i>
+            <div class="line"></div>
+
+        </div>
+
+
+        <div class="picker-allignment">
+            <div class="time-options">
+                <label for="comments" class="label">Your Name</label>
+                <input type="text" placeholder="your name" id="name">
+
+                <div class="dates">
+                    <a class="month">Mär.</a>
+                    <a class="day">20</a>
+                    <a class="weekday">DI</a>
+                    <a class="time">15:00</a>
+                    <a class="time">16:00</a>
+                    <input type="checkbox" class="checkbox">
+                </div>
+                <div class="dates">
+                    <a class="month">Mär.</a>
+                    <a class="day">20</a>
+                    <a class="weekday">DI</a>
+                    <a class="time">15:00</a>
+                    <a class="time">16:00</a>
+                    <input type="checkbox" class="checkbox">
+                </div>
+                <div class="dates">
+                    <a class="month">Mär.</a>
+                    <a class="day">20</a>
+                    <a class="weekday">DI</a>
+                    <a class="time">15:00</a>
+                    <a class="time">16:00</a>
+                    <input type="checkbox" class="checkbox">
+                </div>
+                <div class="dates">
+                    <a class="month">Mär.</a>
+                    <a class="day">20</a>
+                    <a class="weekday">DI</a>
+                    <a class="time">15:00</a>
+                    <a class="time">16:00</a>
+                    <input type="checkbox" class="checkbox">
+                </div>
+                <div class="dates">
+                    <a class="month">Mär.</a>
+                    <a class="day">20</a>
+                    <a class="weekday">DI</a>
+                    <a class="time">15:00</a>
+                    <a class="time">16:00</a>
+                    <input type="checkbox" class="checkbox">
+                </div>
+                <div class="dates">
+                    <a class="month">Mär.</a>
+                    <a class="day">20</a>
+                    <a class="weekday">DI</a>
+                    <a class="time">15:00</a>
+                    <a class="time">16:00</a>
+                    <input type="checkbox" class="checkbox">
+                </div>
+                <div class="dates">
+                    <a class="month">Mär.</a>
+                    <a class="day">20</a>
+                    <a class="weekday">DI</a>
+                    <a class="time">15:00</a>
+                    <a class="time">16:00</a>
+                    <input type="checkbox" class="checkbox">
+                </div>
+                <div class="dates">
+                    <a class="month">Mär.</a>
+                    <a class="day">20</a>
+                    <a class="weekday">DI</a>
+                    <a class="time">15:00</a>
+                    <a class="time">16:00</a>
+                    <input type="checkbox" class="checkbox">
+                </div>
+                <div class="dates">
+                    <a class="month">Mär.</a>
+                    <a class="day">20</a>
+                    <a class="weekday">DI</a>
+                    <a class="time">15:00</a>
+                    <a class="time">16:00</a>
+                    <input type="checkbox" class="checkbox">
+                </div>
+                <div class="dates">
+                    <a class="month">Mär.</a>
+                    <a class="day">20</a>
+                    <a class="weekday">DI</a>
+                    <a class="time">15:00</a>
+                    <a class="time">16:00</a>
+                    <input type="checkbox" class="checkbox">
+                </div>
+                <div class="dates">
+                    <a class="month">Mär.</a>
+                    <a class="day">20</a>
+                    <a class="weekday">DI</a>
+                    <a class="time">15:00</a>
+                    <a class="time">16:00</a>
+                    <input type="checkbox" class="checkbox">
+                </div>
+                <div class="dates">
+                    <a class="month">Mär.</a>
+                    <a class="day">20</a>
+                    <a class="weekday">DI</a>
+                    <a class="time">15:00</a>
+                    <a class="time">16:00</a>
+                    <input type="checkbox" class="checkbox">
+                </div>
+                <div class="dates">
+                    <a class="month">Mär.</a>
+                    <a class="day">20</a>
+                    <a class="weekday">DI</a>
+                    <a class="time">15:00</a>
+                    <a class="time">16:00</a>
+                    <input type="checkbox" class="checkbox">
+                </div>
+                <div class="dates">
+                    <a class="month">Mär.</a>
+                    <a class="day">20</a>
+                    <a class="weekday">DI</a>
+                    <a class="time">15:00</a>
+                    <a class="time">16:00</a>
+                    <input type="checkbox" class="checkbox">
+                </div>
+                <div class="dates">
+                    <a class="month">Mär.</a>
+                    <a class="day">20</a>
+                    <a class="weekday">DI</a>
+                    <a class="time">15:00</a>
+                    <a class="time">16:00</a>
+                    <input type="checkbox" class="checkbox">
+                </div>
+                <div class="dates">
+                    <a class="month">Mär.</a>
+                    <a class="day">20</a>
+                    <a class="weekday">DI</a>
+                    <a class="time">15:00</a>
+                    <a class="time">16:00</a>
+                    <input type="checkbox" class="checkbox">
+                </div>
+                <div class="dates">
+                    <a class="month">Mär.</a>
+                    <a class="day">20</a>
+                    <a class="weekday">DI</a>
+                    <a class="time">15:00</a>
+                    <a class="time">16:00</a>
+                    <input type="checkbox" class="checkbox">
+                </div>
+                <div class="dates">
+                    <a class="month">Mär.</a>
+                    <a class="day">20</a>
+                    <a class="weekday">DI</a>
+                    <a class="time">15:00</a>
+                    <a class="time">16:00</a>
+                    <input type="checkbox" class="checkbox">
+                </div>
+                <div class="dates">
+                    <a class="month">Mär.</a>
+                    <a class="day">20</a>
+                    <a class="weekday">DI</a>
+                    <a class="time">15:00</a>
+                    <a class="time">16:00</a>
+                    <input type="checkbox" class="checkbox">
+                </div>
+                <div class="dates">
+                    <a class="month">Mär.</a>
+                    <a class="day">20</a>
+                    <a class="weekday">DI</a>
+                    <a class="time">15:00</a>
+                    <a class="time">16:00</a>
+                    <input type="checkbox" class="checkbox">
+                </div>
+                <div class="dates">
+                    <a class="month">Mär.</a>
+                    <a class="day">20</a>
+                    <a class="weekday">DI</a>
+                    <a class="time">15:00</a>
+                    <a class="time">16:00</a>
+                    <input type="checkbox" class="checkbox">
+                </div>
+                <div class="dates">
+                    <a class="month">Mär.</a>
+                    <a class="day">20</a>
+                    <a class="weekday">DI</a>
+                    <a class="time">15:00</a>
+                    <a class="time">16:00</a>
+                    <input type="checkbox" class="checkbox">
+                </div>
+                <div class="dates">
+                    <a class="month">Mär.</a>
+                    <a class="day">20</a>
+                    <a class="weekday">DI</a>
+                    <a class="time">15:00</a>
+                    <a class="time">16:00</a>
+                    <input type="checkbox" class="checkbox">
+                </div>
+                <div class="dates">
+                    <a class="month">Mär.</a>
+                    <a class="day">20</a>
+                    <a class="weekday">DI</a>
+                    <a class="time">15:00</a>
+                    <a class="time">16:00</a>
+                    <input type="checkbox" class="checkbox">
+                </div>
+                <div class="dates">
+                    <a class="month">Mär.</a>
+                    <a class="day">20</a>
+                    <a class="weekday">DI</a>
+                    <a class="time">15:00</a>
+                    <a class="time">16:00</a>
+                    <input type="checkbox" class="checkbox">
+                </div>
+                <div class="dates">
+                    <a class="month">Mär.</a>
+                    <a class="day">20</a>
+                    <a class="weekday">DI</a>
+                    <a class="time">15:00</a>
+                    <a class="time">16:00</a>
+                    <input type="checkbox" class="checkbox">
+                </div>
+                <div class="dates">
+                    <a class="month">Mär.</a>
+                    <a class="day">20</a>
+                    <a class="weekday">DI</a>
+                    <a class="time">15:00</a>
+                    <a class="time">16:00</a>
+                    <input type="checkbox" class="checkbox">
+                </div>
+                <div class="dates">
+                    <a class="month">Mär.</a>
+                    <a class="day">20</a>
+                    <a class="weekday">DI</a>
+                    <a class="time">15:00</a>
+                    <a class="time">16:00</a>
+                    <input type="checkbox" class="checkbox">
+                </div>
+                <div class="dates">
+                    <a class="month">Mär.</a>
+                    <a class="day">20</a>
+                    <a class="weekday">DI</a>
+                    <a class="time">15:00</a>
+                    <a class="time">16:00</a>
+                    <input type="checkbox" class="checkbox">
+                </div>
+                <div class="dates">
+                    <a class="month">Mär.</a>
+                    <a class="day">20</a>
+                    <a class="weekday">DI</a>
+                    <a class="time">15:00</a>
+                    <a class="time">16:00</a>
+                    <input type="checkbox" class="checkbox">
+                </div>
+                <div class="dates">
+                    <a class="month">Mär.</a>
+                    <a class="day">20</a>
+                    <a class="weekday">DI</a>
+                    <a class="time">15:00</a>
+                    <a class="time">16:00</a>
+                    <input type="checkbox" class="checkbox">
+                </div>
+                <div class="dates">
+                    <a class="month">Mär.</a>
+                    <a class="day">20</a>
+                    <a class="weekday">DI</a>
+                    <a class="time">15:00</a>
+                    <a class="time">16:00</a>
+                    <input type="checkbox" class="checkbox">
+                </div>
+                <div class="dates">
+                    <a class="month">Mär.</a>
+                    <a class="day">20</a>
+                    <a class="weekday">DI</a>
+                    <a class="time">15:00</a>
+                    <a class="time">16:00</a>
+                    <input type="checkbox" class="checkbox">
+                </div>
+                <div class="dates">
+                    <a class="month">Mär.</a>
+                    <a class="day">20</a>
+                    <a class="weekday">DI</a>
+                    <a class="time">15:00</a>
+                    <a class="time">16:00</a>
+                    <input type="checkbox" class="checkbox">
+                </div>
+                <div class="dates">
+                    <a class="month">Mär.</a>
+                    <a class="day">20</a>
+                    <a class="weekday">DI</a>
+                    <a class="time">15:00</a>
+                    <a class="time">16:00</a>
+                    <input type="checkbox" class="checkbox">
+                </div>
+                <div class="dates">
+                    <a class="month">Mär.</a>
+                    <a class="day">20</a>
+                    <a class="weekday">DI</a>
+                    <a class="time">15:00</a>
+                    <a class="time">16:00</a>
+                    <input type="checkbox" class="checkbox">
+                </div>
+                <div class="dates">
+                    <a class="month">Mär.</a>
+                    <a class="day">20</a>
+                    <a class="weekday">DI</a>
+                    <a class="time">15:00</a>
+                    <a class="time">16:00</a>
+                    <input type="checkbox" class="checkbox">
+                </div>
+                <div class="dates">
+                    <a class="month">Mär.</a>
+                    <a class="day">20</a>
+                    <a class="weekday">DI</a>
+                    <a class="time">15:00</a>
+                    <a class="time">16:00</a>
+                    <input type="checkbox" class="checkbox">
+                </div>
+                <div class="dates">
+                    <a class="month">Mär.</a>
+                    <a class="day">20</a>
+                    <a class="weekday">DI</a>
+                    <a class="time">15:00</a>
+                    <a class="time">16:00</a>
+                    <input type="checkbox" class="checkbox">
+                </div>
+                <div class="dates">
+                    <a class="month">Mär.</a>
+                    <a class="day">20</a>
+                    <a class="weekday">DI</a>
+                    <a class="time">15:00</a>
+                    <a class="time">16:00</a>
+                    <input type="checkbox" class="checkbox">
+                </div>
+                <div class="dates">
+                    <a class="month">Mär.</a>
+                    <a class="day">20</a>
+                    <a class="weekday">DI</a>
+                    <a class="time">15:00</a>
+                    <a class="time">16:00</a>
+                    <input type="checkbox" class="checkbox">
+                </div>
+                <div class="dates">
+                    <a class="month">Mär.</a>
+                    <a class="day">20</a>
+                    <a class="weekday">DI</a>
+                    <a class="time">15:00</a>
+                    <a class="time">16:00</a>
+                    <input type="checkbox" class="checkbox">
+                </div>
+                <div class="dates">
+                    <a class="month">Mär.</a>
+                    <a class="day">20</a>
+                    <a class="weekday">DI</a>
+                    <a class="time">15:00</a>
+                    <a class="time">16:00</a>
+                    <input type="checkbox" class="checkbox">
+                </div>
+                <div class="dates">
+                    <a class="month">Mär.</a>
+                    <a class="day">20</a>
+                    <a class="weekday">DI</a>
+                    <a class="time">15:00</a>
+                    <a class="time">16:00</a>
+                    <input type="checkbox" class="checkbox">
+                </div>
+                <div class="dates">
+                    <a class="month">Mär.</a>
+                    <a class="day">20</a>
+                    <a class="weekday">DI</a>
+                    <a class="time">15:00</a>
+                    <a class="time">16:00</a>
+                    <input type="checkbox" class="checkbox">
+                </div>
+                <!--End of Dates-->
+
+
+                <label for="comments" class="label">Comments</label>
+                <input type="text" id="comments" placeholder="enter your comments here">
+
+
+                <!--BUTTONS SUBMIT AND STATS-->
+                <button id="submit">Submit</button>
+                <button id="show-stats">Show Stats</button>
+
+                <!--STATS DIV ( BY DEFAULT HIDDEN )-->
+                <div class="statistics" id="statistics">
+                    <!--title statistics-->
+                    <div class="statistics-title" id="statistics-title">
+                        <h2>Statistics</h2>
+                    </div>
+
+                    <!--statistics table-->
+                    <table class="statistics-table" id="statistics-table">
+                        <tr class="table-top" id='table-top'>
+                            <td>Name</td>
+                            <td>21.03.</td>
+                            <td>21.03.</td>
+                            <td>21.03.</td>
+                            <td>21.03.</td>
+                            <td>21.03.</td>
+                            <td>21.03.</td>
+                            <td>21.03.</td>
+                            <td>21.03.</td>
+                            <td>21.03.</td>
+                            <td>21.03.</td>
+                            <td>21.03.</td>
+                        </tr>
+                        <tr class="table-time" id="table-time-start">
+                            <td></td>
+                            <td>15:00</td>
+                            <td>15:00</td>
+                            <td>15:00</td>
+                            <td>15:00</td>
+                            <td>15:00</td>
+                            <td>15:00</td>
+                            <td>15:00</td>
+                            <td>15:00</td>
+                            <td>15:00</td>
+                            <td>15:00</td>
+                            <td>15:00</td>
+                        </tr>
+                        <tr class="table-time" id="table-time-end">
+                            <td></td>
+                            <td>16:00</td>
+                            <td>16:00</td>
+                            <td>16:00</td>
+                            <td>16:00</td>
+                            <td>16:00</td>
+                            <td>16:00</td>
+                            <td>16:00</td>
+                            <td>16:00</td>
+                            <td>16:00</td>
+                            <td>16:00</td>
+                            <td>16:00</td>
+                        </tr>
+
+                        <tr class="table-data" id="table-data">
+                            <td>Dominik</td>
+                            <td><i class="material-icons md-24" id="close-statistics">done</i></td>
+                            <td><i class="material-icons md-24" id="close-statistics">done</i></td>
+                            <td><i class="material-icons md-24" id="close-statistics">done</i></td>
+                            <td><i class="material-icons md-24" id="close-statistics">done</i></td>
+                            <td><i class="material-icons md-24" id="close-statistics">done</i></td>
+                            <td><i class="material-icons md-24" id="close-statistics">done</i></td>
+                            <td><i class="material-icons md-24" id="close-statistics">done</i></td>
+                            <td><i class="material-icons md-24" id="close-statistics">done</i></td>
+                            <td><i class="material-icons md-24" id="close-statistics">done</i></td>
+                            <td><i class="material-icons md-24" id="close-statistics">done</i></td>
+                            <td><i class="material-icons md-24" id="close-statistics">done</i></td>
+                        </tr>
+
+                        <tr class="table-data" id="table-data">
+                            <td>Artjom</td>
+                            <td><i class="material-icons md-24" id="close-statistics">done</i></td>
+                            <td></td>
+                            <td></td>
+                            <td><i class="material-icons md-24" id="close-statistics">done</i></td>
+                            <td><i class="material-icons md-24" id="close-statistics">done</i></td>
+                            <td></td>
+                            <td><i class="material-icons md-24" id="close-statistics">done</i></td>
+                            <td><i class="material-icons md-24" id="close-statistics">done</i></td>
+                            <td><i class="material-icons md-24" id="close-statistics">done</i></td>
+                            <td></td>
+                            <td><i class="material-icons md-24" id="close-statistics">done</i></td>
+                        </tr>
+
+                        <tr class="table-data" id="table-data">
+                            <td>Lu</td>
+                            <td><i class="material-icons md-24" id="close-statistics">done</i></td>
+                            <td></td>
+                            <td><i class="material-icons md-24" id="close-statistics">done</i></td>
+                            <td></td>
+                            <td></td>
+                            <td><i class="material-icons md-24" id="close-statistics">done</i></td>
+                            <td></td>
+                            <td><i class="material-icons md-24" id="close-statistics">done</i></td>
+                            <td></td>
+                            <td></td>
+                            <td><i class="material-icons md-24" id="close-statistics">done</i></td>
+                        </tr>
+
+                        <tr class="table-data" id="table-data">
+                            <td>Hofstetter</td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                        </tr>
+
+                        <tr class="table-data" id="table-data">
+                            <td>Madeleine</td>
+                            <td><i class="material-icons md-24" id="close-statistics">done</i></td>
+                            <td></td>
+                            <td></td>
+                            <td><i class="material-icons md-24" id="close-statistics">done</i></td>
+                            <td><i class="material-icons md-24" id="close-statistics">done</i></td>
+                            <td></td>
+                            <td><i class="material-icons md-24" id="close-statistics">done</i></td>
+                            <td><i class="material-icons md-24" id="close-statistics">done</i></td>
+                            <td><i class="material-icons md-24" id="close-statistics">done</i></td>
+                            <td></td>
+                            <td><i class="material-icons md-24" id="close-statistics">done</i></td>
+                        </tr>
+
+                    </table>
+
+                    <button id="hide-stats">Done</button>
+                </div>
+
+
+            </div>
+
+        </div>
+
+        <!--holds the dates-->
+
+
+
+
+
+
+    </div>
+
+    <div class="footer">
+        <a>©2022 Artjom Moisejev, Dominik Englert</a>
+    </div>
+
+    <script src="engine.js"></script>
+</body>
+
+</html>

@@ -1,0 +1,274 @@
+#add-new-appointment-container {
+    width: 100%;
+    background-image: linear-gradient(90deg, var(--primary), var(--secondary));
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    color: white;
+    border-radius: 10px 10px 0px 0px;
+}
+
+#add-new-appointment-formular {
+    width: 100%;
+    /* max-width: 700px; */
+    /* background-image: linear-gradient(90deg, var(--five), var(--six)); */
+    margin: 20px 0px 20px 0px;
+    padding: 20px;
+}
+
+#go-up {
+    width: 100%;
+    display: flex;
+    justify-content: end;
+}
+
+#title-name-info {
+    text-align: center;
+}
+
+#submit-new-appointment {
+    text-align: center;
+}
+
+#submit-new-appointment-button {
+    width: 220px;
+    height: 40px;
+    border-style: none;
+    border-radius: 20px;
+    background-color: var(--six);
+    transition: .3s ease;
+    margin-top: 40px;
+}
+
+#submit-new-appointment-button:hover {
+    width: 250px;
+    transform: scale(1.04);
+    background-color: var(--seven);
+    cursor:pointer;
+}
+
+#show-stats {
+    width: 120px;
+    height: 40px;
+    border-style: none;
+    border-radius: 20px;
+    background-color: var(--six);
+    transition: .3s ease;
+    margin-top: 40px;
+    margin-right: 10px;
+}
+
+#show-stats:hover {
+    width: 150px;
+    transform: scale(1.04);
+    background-color: var(--seven);
+    cursor:pointer;
+}
+
+#add-new-option {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
+#input-group {
+    text-align: center;
+}
+
+.date-time-selector {
+    display: flex;
+}
+
+#added-dates {
+    min-height: 150px;
+    margin-top: 50px;
+    padding: 20px;
+    background-color: var(--whiteT);
+    border-radius: 10px;
+    justify-content: center;
+    text-align: center;
+}
+
+.time-options {
+    display: flex;
+    flex-flow: row wrap;
+    justify-content: space-around;
+    row-gap: 10px;
+    column-gap: 10px;
+    text-align: center;
+    justify-content: center;
+}
+
+.dates-selected {
+    display: flex;
+    flex-flow: row wrap;
+    width: 50px;
+    justify-content: center;
+    padding: 15px;
+    border-color: var(--black);
+    border-width: 1px;
+    border-radius: 2px;
+    border-style: solid;
+    color: white;
+}
+
+.month,
+.weekday {
+    font-weight: 500;
+    color: white;
+}
+
+.day {
+    font-weight: 700;
+    font-size: 25px;
+}
+
+.time {
+    font-size: 10px;
+    font-weight: 500;
+    color: white;
+}
+
+
+#end-date-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    column-gap: 40px;
+    margin-top: 40px;
+}
+
+#select-first-date {
+    display: inline-block;
+    justify-content: center;
+    text-align: center;
+}
+#go-up:hover {
+    color: var(--seven);
+    cursor: pointer;
+}
+
+/*INPUTS*/
+#title-name-info p {
+    margin-top: 10px;
+}
+
+#appointment-name {
+    width: 90%;
+    max-width: 400px;
+    height: 40px;
+    border-radius: 20px;
+    border-style: none;
+    padding-left: 20px;
+}
+
+#appointment-info {
+    width: 90%;
+    max-width: 400px;
+    height: 40px;
+    border-radius: 20px;
+    border-style: none;
+    padding-left: 20px;
+}
+
+#add-new-option {
+    margin-top: 15px;
+    /* align-items: center; */
+    align-items:flex-end;
+}
+
+#input-group {
+    padding: 5px;
+}
+
+#input-group input {
+    padding: 10px 20px 10px 20px;
+    border-style: none;
+    border-radius: 20px;
+}
+
+#add-option {
+    height: 40px;
+    width: 100px;
+    border-radius: 20px;
+    border-style: none;
+    background-color: var(--six);
+    margin: 5px;
+    margin-left: 10px;
+    transition: .3s ease;
+}
+
+#add-option:hover {
+    transform: scale(1.04);
+    background-color: var(--seven);
+    cursor: pointer;
+}
+
+#select-first-date p {
+    margin-bottom: 6px;
+}
+
+
+/*SLIDER*/
+/* The switch - the box around the slider */
+.switch {
+    position: relative;
+    display: inline-block;
+    width: 60px;
+    height: 34px;
+  }
+
+  /* Hide default HTML checkbox */
+  .switch input {
+    opacity: 0;
+    width: 0;
+    height: 0;
+  }
+
+  /* The slider */
+  .slider {
+    position: absolute;
+    cursor: pointer;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: var(--whiteT);
+    -webkit-transition: .4s;
+    transition: .4s;
+  }
+
+  .slider:before {
+    position: absolute;
+    content: "";
+    height: 26px;
+    width: 26px;
+    left: 4px;
+    bottom: 4px;
+    background-color: white;
+    -webkit-transition: .4s;
+    transition: .4s;
+  }
+
+  input:checked + .slider {
+    background-color: var(--seven);
+  }
+
+  input:focus + .slider {
+    box-shadow: 0 0 1px #2196F3;
+  }
+
+  input:checked + .slider:before {
+    -webkit-transform: translateX(26px);
+    -ms-transform: translateX(26px);
+    transform: translateX(26px);
+  }
+
+  /* Rounded sliders */
+  .slider.round {
+    border-radius: 34px;
+  }
+
+  .slider.round:before {
+    border-radius: 50%;
+  }

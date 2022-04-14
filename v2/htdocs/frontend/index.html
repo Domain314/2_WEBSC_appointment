@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../frontend/css/stylings.css">
+    <link rel="stylesheet" href="../frontend/css/formstyling.css">
+    <link rel="stylesheet" href="../frontend/css/colors.css">
+    <link rel="stylesheet" href="../frontend/css/voting.css">
+
+    <!--Google Icons-->
+    <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+
+    <!--Google Fonts-->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Prompt:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Roboto+Mono:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;1,100;1,200;1,300;1,400;1,500;1,600;1,700&display=swap"
+        rel="stylesheet">
+
+    <script src="https://code.jquery.com/jquery-3.6.0.js"
+        integrity="sha256-H+K7U5CnXl1h5ywQfKtSj8PCmoN9aaq30gDh27Xc0jk=" crossorigin="anonymous"></script>
+
+    <title>Dooodle</title>
+</head>
+
+<body>
+
+    <!--Full header-Span-->
+    <div id="header">
+        <!--Logo+Title-->
+        <div class="logo">
+            <i class="material-icons md-36 logo-icon">data_usage</i>
+            <h1>Dooodle</h1>
+        </div>
+        <!--Button für new Appointment in header-->
+        <div class="add-new-appointment" id="add-new-appointment">
+            <i class="material-icons md-36">add_circle_outline</i>
+            <p>add new</p>
+        </div>
+
+    </div>
+
+    <!--Main-Content between header and Footer-->
+    <div id="mainpage-content">
+        <!--container which only holds the single-appointments-->
+        <div id="flexbox-container">
+
+<!---------------------------------------------------->
+<!-----------------------DEMO DATA-------------------->
+<!---------------------------------------------------->
+
+
+<!------------------------------------------------------>
+<!------------------END of DEMO DATA-------------------->
+<!------------------------------------------------------>
+
+        </div>
+    </div>
+
+    <!--Background of Formular big Container-->
+    <div id="add-new-appointment-container">
+
+        <!--Formular itself-->
+        <div id="add-new-appointment-formular">
+            <!--Button to go up-->
+            <div id="go-up">
+                <i class="material-icons md-36">cancel</i>
+            </div>
+
+            <!--container holding title-name and info-->
+            <div id="title-name-info">
+                <h1>Add New Appointment</h1>
+                <p>Name</p>
+                <input type="text" id="appointment-name" placeholder="enter your name here...">
+                <p>Info</p>
+                <input id="appointment-info" placeholder="add additional informations...">
+            </div>
+
+            <!--Add new time and date option-->
+            <div id="add-new-option">
+                <div class="date-time-selector">
+                    <!--Date selector-->
+                    <div id="input-group">
+                        <label for="option-date">Date</label><br>
+                        <input type="date" id="option-date">
+                    </div>
+                    <!--From-To-->
+                    <div id="input-group">
+                        <label for="option-time-start">From</label><br>
+                        <input type="time" id="option-time-start">
+                    </div>
+                    <div id="input-group">
+                        <label for="option-time-end">To</label><br>
+                        <input type="time" id="option-time-end">
+                    </div>
+                </div>
+
+                <!--Add Button-->
+                <button id="add-option">Add Option</button>
+            </div>
+
+            <!--view with added dates-->
+            <div id="added-dates">
+                <div class="time-options" id="selected-dates">
+                    <!-- Dummy -->
+                    <!-- <div class="dates-selected">
+                        <a class="month">Mär.</a>
+                        <a class="day">20</a>
+                        <a class="weekday">DI</a>
+                        <a class="time">15:00</a>
+                        <a class="time">16:00</a>
+                    </div> -->
+
+                </div>
+            </div>
+
+            <div id="end-date-container">
+
+                <div id="input-group">
+                    <label for="end-date">Expiry Date</label><br>
+                    <input type="datetime-local" id="end-date">
+                </div>
+
+                <div id="select-first-date">
+                    <p>Select First Date</p>
+                    <label class="switch">
+                        <input type="checkbox" id="earliestOption" checked onclick='earliestCheckBox();' accesskey=c>
+                        <span class="slider round"></span>
+                    </label>
+                </div>
+
+            </div>
+
+            <!--Submit Button-->
+            <div <div id="submit-new-appointment">
+                <button id="submit-new-appointment-button">Submit</button>
+            </div>
+        </div>
+    </div>
+
+    <!--Footer-->
+    <div id="footer">
+        <p>©2022 Artjom Moisejev, Dominik Englert</p>
+        <p>Imprint</p>
+    </div>
+
+    <!-- Scripts -->
+    <script src="../frontend/js/utils.js"></script>
+    <script src="../frontend/js/ajaxDB.js"></script>
+    <script src="../frontend/js/addAppointment.js"></script>
+    <script src="../frontend/js/userVote.js"></script>
+    <script src="../frontend/js/main.js"></script>
+</body>
+
+</html>

@@ -1,0 +1,20 @@
+:root {
+    --primary: #1a2980;
+    --secondary: #26d0ce;
+    --third: #283048;
+    --fourth: #859398; 
+    --five: #ffb347;
+    --six: #ffcc33;
+    --seven: #FF416C;
+    --eight: #FF4B2B;
+    --nine: #fffc00;
+    --ten: #ffffff;
+
+
+    --primary-light: #3b4caa58;
+    --secondary-light: #26d0cd00;
+    --whiteT: #ffffff46;
+
+    --orange: #fca311;
+    --pink: #8338ec;
+}

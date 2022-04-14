@@ -14,7 +14,7 @@ class AjaxDB {
       url: this.directory,
       cache: false,
       dataType: "json",
-      data: { method: "queryAll", db: "appointments", },
+      data: { method: "queryAll", db: "appointments", count: true},
       success: function (response) {
 
         buildAppointments(response);

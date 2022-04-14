@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="//code.jquery.com/ui/1.13.1/themes/base/jquery-ui.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Prompt:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Roboto+Mono:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;1,100;1,200;1,300;1,400;1,500;1,600;1,700&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+    <link rel="stylesheet" href="../frontend/css/styling.css">
+    <title>Dooodle</title>
+</head>
+
+<body>
+
+    <div class="title">
+        <!--title only-->
+        <img class="logo" src="../frontend/logo/doole_logo.png" width="100px" height="70px">
+        <h1>Dooodle</h1>
+    </div>
+
+    <div class="main">
+        <!--white box container-->
+        <div class="container">
+            <!--content container-->
+            <h2 id="content-title"></h2>
+            <div></div>
+            <i class="material-icons md-48" id="close-appointment-picker">cancel</i>
+            <div class="line"></div>
+        </div>
+
+        <div class="appointments">
+            <!--wrapping container for all appointments-->
+
+            <!--single appointment-->
+            <!-- <div class="appointment">
+                <i class="material-icons md-36">grading</i>
+                <h3>Kino Termin</h3>
+                <a>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Iste reprehenderit nisi dolore sapiente,
+                    veniam quasi similique perspiciatis velit ipsum minima?</a>
+            </div> -->
+
+        </div>
+
+    </div>
+
+    <div class="footer">
+        <a>©2022 Artjom Moisejev, Dominik Englert</a>
+    </div>
+
+    <!--Add new Appointment Form (hidden/shown by JS)  Main Container-->
+    <div class="appointment-form" id="appointment-form" style="display: none">
+        <div class="appointment-form-title">
+            <div></div>
+            <!-- <i class="material-icons md-48">event</i> -->
+            <h2>Add new appointment</h2>
+            <i class="material-icons md-48" id="close_appointment_form">cancel</i>
+        </div>
+
+        <!--INPUT FIELDS-->
+        <div class="appointment-form-formular">
+            <h3>name of new appointment</h3>
+            <input type="text" id="appointment-name" placeholder="titel of the new appointment">
+            <h3>additional informations</h3>
+            <textarea id="appointment-info" placeholder="enter additional informations"></textarea>
+            <h3 class="date-time">select date and time</h3>
+            <input type="date" id="option-date">
+            <input type="time" id="option-time-start">
+            <input type="time" id="option-time-end">
+            <div id="add-date">add option</div>
+            <h3 class="date-time">selected spots</h3>
+        </div>
+
+        <div class="selected-dates-allignments" >
+            <div class="time-options" id="selected-dates">
+
+                <!-- Dummy -->
+                <!-- <div class="dates-selected">
+                    <a class="month">Mär.</a>
+                    <a class="day">20</a>
+                    <a class="weekday">DI</a>
+                    <a class="time">15:00</a>
+                    <a class="time">16:00</a>
+                </div> -->
+
+            </div>
+        </div>
+
+        <div class="appointment-form-formular">
+            <h4>Select End Date</h4>
+        </div>
+
+        <div class="appointment-form-title">
+            <div></div>
+            <div></div>
+            <a>select first appointment date as end date</a>
+            <label class="switch">
+
+                <input type="checkbox" id="earliestOption" checked onclick='earliestCheckBox();' accesskey=c>
+                <span class="slider round"></span>
+            </label>
+            <div>
+                <input type="datetime-local" id="end-date">
+            </div>
+            <div id="submit-new-appointment">
+                submit
+            </div>
+
+        </div>
+
+
+    </div>
+
+
+    <!-- Scripts -->
+    <script src="../frontend/js/utils.js"></script>
+    <script src="../frontend/js/ajaxDB.js"></script>
+    <script src="../frontend/js/addAppointment.js"></script>
+    <script src="../frontend/js/userVote.js"></script>
+    <script src="../frontend/js/main.js"></script>
+
+</body>
+
+</html>

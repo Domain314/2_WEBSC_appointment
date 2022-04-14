@@ -1,0 +1,13 @@
+appointments:
+-  makeAppointment(titel, text, place, date, expdate)
+-  loadOneDay(date)
+-  loadOneMonth(date)
+
+options:
+-  makeOption(AID, Titel, Date)
+-  loadOptions(AID-array)
+
+userinput:
+-  makeUInput(OID, Username, Comment)
+-  loadInputs(OID)
+  calcInputsForOption(OID)

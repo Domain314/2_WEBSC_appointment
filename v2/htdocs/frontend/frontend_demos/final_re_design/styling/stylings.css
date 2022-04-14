@@ -1,0 +1,190 @@
+* {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+    font-family: 'Prompt', sans-serif;
+}
+
+body {
+    background-image: linear-gradient(60deg, var(--primary-light), var(--secondary-light));
+}
+
+.material-icons.md-18 {
+    font-size: 18px;
+}
+
+.material-icons.md-24 {
+    font-size: 24px;
+}
+
+.material-icons.md-36 {
+    font-size: 36px;
+}
+
+.material-icons.md-48 {
+    font-size: 48px;
+}
+
+.logo-icon {
+    padding-right: 20px;
+}
+
+#header {
+    width: 100%;
+    height: 100px;
+    display: flex;
+    justify-content: space-between;
+    background-image: linear-gradient(90deg, var(--primary), var(--secondary));
+    align-items: center;
+    padding: 0px 20px 0px 20px;
+    position: fixed;
+    top: 0;
+    transition: 0.4s;
+    color: white;
+    box-shadow: 0px 5px 10px 1px rgba(0,0,0,0.3);
+}
+
+.logo {
+    display: flex;
+    align-items: center;
+}
+
+.add-new-appointment {
+    display: flex;
+    align-items: center;
+    padding: 3px 10px 3px 5px;
+    background-color: white;
+    border-radius: 10px;
+    color: black;
+    transition: .2s ease;
+}
+
+.add-new-appointment i {
+    margin-right: 5px;
+}
+
+.add-new-appointment:hover {
+    transform: scale(1.05);
+    background-image: linear-gradient(90deg, var(--five), var(--six));
+    cursor: pointer;
+}
+
+#mainpage-content {
+    margin-top: 120px;
+    /*margin away from header*/
+    min-height: 100vh;
+}
+
+#single-box {
+    width: 300px;
+    height: 200px;
+    border-width: 1px;
+    border-style: solid;
+    padding: 20px;
+    overflow-y: auto;
+    border-radius: 0px 0px 0px 0px;
+    
+    transition: .2s ease;
+    background-color: transparent;
+    /* color: white; */
+}
+
+#single-box:hover {
+    transform: scale(1.04);
+    background-image: linear-gradient(90deg, var(--five), var(--six));
+    color: black;
+    border-style: none;
+    border-radius: 10px;
+    cursor: pointer;
+    box-shadow: 0px 5px 20px 1px rgba(0,0,0,0.2);
+}
+
+.single-box-title {
+    display: flex;
+    /* column-gap: 20px; */
+    align-items: center;
+    margin-bottom: 3px;
+}
+
+.single-box-title h1 {
+    font-size: 25px;
+    font-weight: 600;
+}
+
+.single-box-subtitle {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.votes {
+    display: flex;
+    align-items: center;
+    
+}
+
+.expires {
+    display: flex;
+    align-items: center;
+}
+
+.divider {
+    width: 100%;
+    height: 1px;
+    background-color: black;
+    border-radius: 5px;
+    margin: 10px 0px 4px 0px;
+}
+
+.votes i {
+    padding-right: 5px;
+}
+
+.expires i {
+    padding-right: 5px;
+}
+
+@media screen and (max-width: 640px) {
+    #single-box {
+        width: 90%;
+        /*Sobald Screen kleiner als 640px breit wird das geändert hier*/
+    }
+
+    #flexbox-container {
+        padding: 0px;
+    }
+
+    #add-new-appointment-box {
+        width: 90%;
+    }
+}
+
+#flexbox-container {
+    display: flex;
+    /*set flex on the container to use flex*/
+    flex-direction: row;
+    /*row -> alles in einer reihe formatiert*/
+    row-gap: 10px;
+    /* row und column-gap Abstand zwischen elemente*/
+    column-gap: 10px;
+    flex-wrap: wrap;
+    /* erlaubt dass es sich auf mehrere Zeilen teilt*/
+    justify-content: space-around;
+    /* horizontales alignment */
+    align-items: center;
+    /*vertical allignment -> geht nur wenn höhe definiert wird!*/
+    /* height: 100%; */
+    padding: 0px 10px 20px 10px;
+}
+
+#footer {
+    width: 100%;
+    height: 100px;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0px 20px 0px 20px;
+    background-image: linear-gradient(90deg, var(--primary), var(--secondary));
+    color: white;
+}
