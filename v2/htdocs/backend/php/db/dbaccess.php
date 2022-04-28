@@ -11,5 +11,5 @@
       echo "<br>Connection failed";
       echo $e->getMessage();
     }
-    
+
  ?>

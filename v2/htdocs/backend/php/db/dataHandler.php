@@ -1,33 +1,9 @@
 <?php
 class DataHandler {
-  public function queryOneMonth($date, $db) {
-    $sqlDate = date('Y-m-d H:i:s', strtotime($date));
+  public function queryTest($db) {
     $dir = $_SERVER["DOCUMENT_ROOT"] . "/backend/php/db/dbaccess.php";
     include($dir);
-    if ($stmt = $conn->prepare(
-      "SELECT * FROM ?
-      WHERE YEAR(Date) = YEAR(cast(? as date))
-      AND MONTH(Date) = MONTH(cast(? as date))"
-    )) {
-                $stmt->bindValue(1, $db);
-                $stmt->bindValue(2, $sqlDate);
-                $stmt->bindValue(3, $sqlDate);
-                $stmt->execute();
-                return $stmt->fetchAll();
-    }
-    return null;
-  }
-
-  public function queryOneDay($date, $db) {
-    $sqlDate = date('Y-m-d H:i:s', strtotime($date));
-    $dir = $_SERVER["DOCUMENT_ROOT"] . "/backend/php/db/dbaccess.php";
-    include($dir);
-    if ($stmt = $conn->prepare(
-      "SELECT * FROM ?
-      WHERE (cast(Date as date) = cast(? as date))"
-    )) {
-                $stmt->bindValue(1, $db);
-                $stmt->bindValue(2, $sqlDate);
+    if ($stmt = $conn->prepare("SELECT * FROM " . $db)) {
                 $stmt->execute();
                 return $stmt->fetchAll();
     }
@@ -58,15 +34,12 @@ class DataHandler {
     $dir = $_SERVER["DOCUMENT_ROOT"] . "/backend/php/db/dbaccess.php";
     include($dir);
 
-    // sleep(2);
     $sql = "SELECT * FROM userinput WHERE ";
 
     foreach ($oid as $key => $value) {
       $sql .= " oID = " . $value . " OR ";
     }
     $sql .= "oID = 0";
-
-    // error_log("sql: " . $sql);
 
     if ($stmt = $conn->prepare($sql)) {
                 $stmt->execute();
@@ -75,6 +48,7 @@ class DataHandler {
     return null;
   }
 
+  // choose where to POST, based on database
   public function postData($db, $data) {
     switch ($db) {
       case 'appointments':
@@ -121,7 +95,6 @@ class DataHandler {
 
     $sql = "INSERT INTO options (aID,oID,Titel,Date,timestart,timeend) VALUES (?,?,?,?,?,?) ";
     $AID = $data[0]->getAid();
-    error_log($AID);
     $titel = $data[0]->getTitel();
 
     if ($stmt = $conn->prepare($sql)) {
@@ -162,9 +135,19 @@ class DataHandler {
 
   }
 
-
-
-
+  public function deleteAppointment($param) {
+    $dir = $_SERVER["DOCUMENT_ROOT"] . "/backend/php/db/dbaccess.php";
+    include($dir);
+    if ($stmt = $conn->prepare(
+      "DELETE appointments, options, userinput FROM appointments LEFT JOIN options ON (options.aID = ?) LEFT JOIN userinput ON (options.oID = userinput.oID) WHERE appointments.aID = ?"
+    )) {
+          $stmt->bindValue(1, $param);
+          $stmt->bindValue(2, $param);
+          $stmt->execute();
+          return $stmt->fetchAll();
+    }
+    return null;
+  }
 
 }
 

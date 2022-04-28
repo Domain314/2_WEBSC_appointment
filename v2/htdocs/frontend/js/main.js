@@ -2,6 +2,7 @@ var ajaxDB = new AjaxDB();
 var mode = "Appointments";
 var optionIDs = new Array();
 
+// QUESTION @ Lektor: is 'error skipping' considered 'bad practice'?
 // ajax error skipping
 // $(document).ajaxError(function(e, jqxhr, settings, exception) {
 //   if (jqxhr.readyState == 0 || jqxhr.status == 0) {
@@ -13,25 +14,31 @@ var optionIDs = new Array();
 $(document).ready(function () {
 
   setupAppointments();
+  preventGoingBack();
 
 });
 
-// to-do: reload page, instead going back
-// $(function() {
-//  $(window).bind('hashchange', function() {
-//    console.log('clicked back');
-//  }).trigger('hashchange');
-// });
-
+// reload page, instead going back
+function preventGoingBack() {
+  window.history.pushState(null, "", window.location.href);
+  window.onpopstate = function() {
+    window.history.pushState(null, "", window.location.reload());
+  };
+}
 
 // send request
 function setupAppointments() {
   var mode = "Appointments";
+  $("#add-new-appointment").show();
+  $("#add-new-appointment-container").show();
   ajaxDB.loadAppointments();
 }
+
 // send request
 function loadOptions(id) {
   var mode = "Options";
+  $("#add-new-appointment").hide();
+  $("#add-new-appointment-container").hide();
   ajaxDB.loadOptions(id);
 }
 
@@ -40,7 +47,6 @@ function loadOptions(id) {
 // prepare container and fill with utils.js -> constructAppointment()
 function buildAppointments(response) {
   $("#mainpage-content")[0].children[0].remove();
-
   $("#mainpage-content").append("<div id='flexbox-container'></div>");
 
   if (response != null) {
@@ -90,8 +96,8 @@ function buildOptions(response) {
       ));
   });
 
-  // (X)-Button
-  $("#go-back").on('click', function () {
+  // (X)-BUTTON
+  $("#go-back>i").on('click', function () {
     window.location.reload();
   });
 
@@ -99,16 +105,16 @@ function buildOptions(response) {
   $("#show-stats").on('click', function () {
       if ($("#statistics").is(":visible")) {
         $("#statistics").fadeOut(300);
-        console.log("hide stats");
+        // console.log("hide stats");
       } else {
         $("#statistics").fadeIn(300);
-        console.log("show stats");
+        // console.log("show stats");
       }
   });
 
   //SUBMIT
   $("#submit-new-vote-button").on('click', function () {
-      console.log("submit");
+      // console.log("submit");
       submitUserVote();
   });
 
@@ -135,13 +141,16 @@ function buildStats(response) {
   //HIDE STATS
   $("#hide-stats").on('click', function () {
       $("#statistics").fadeOut(300);
-      console.log("hide stats");
+      $("#message-container-new").fadeOut(300);
+      // console.log("hide stats");
   });
 
   requestStats();
 }
 
 function endOfAnimation() {
-  window.confirm("success");
+  $("#loading-screen").hide();
+  window.confirm("success!");
   window.location.reload();
+  $("html, body").scrollTop(0);
 }

@@ -6,7 +6,7 @@ class AjaxDB {
   };
 
 
-  // LOAD DATA
+  // GET DATA
 
   loadAppointments() {
     $.ajax({
@@ -20,7 +20,7 @@ class AjaxDB {
         buildAppointments(response);
 
       },
-      error: buildAppointments(null),
+      error: function(e) { console.log(e); },
     });
   }
 
@@ -36,7 +36,7 @@ class AjaxDB {
         buildOptions(response);
 
       },
-      error: function() { window.alert("error"); }
+      error: function() { console.log(e); }
     });
   }
 
@@ -60,24 +60,26 @@ class AjaxDB {
 
   ajaxAppointment(appointment) {
     event.preventDefault();
-      $.ajax({
-        method: "POST",
-        url: this.directory,
-        cache: false,
-        async: true,
-        data: appointment,
-        success: function (response) {
-          console.log("successs");
-          submitAllOptions();
-        },
-        error: function (e) {
-          submitAllOptions();
-          // console.log(e);
-        }
-      });
+    $("#loading-screen").fadeIn(200);
+    $.ajax({
+      method: "POST",
+      url: this.directory,
+      cache: false,
+      async: true,
+      data: appointment,
+      success: function (response) {
+
+        submitAllOptions();
+      },
+      error: function (e) {
+        submitAllOptions();
+        // console.log(e);
+      }
+    });
   }
 
   ajaxOptions(aid, titel, selectedOptions) {
+    $("#loading-screen").fadeIn(200);
     $.ajax({
       type: "POST",
       url: this.directory,
@@ -101,6 +103,7 @@ class AjaxDB {
 
   ajaxUserInput(oids, userName, comment) {
     event.preventDefault();
+    $("#loading-screen").fadeIn(200);
     $.ajax({
       type: "POST",
       url: this.directory,
@@ -112,7 +115,7 @@ class AjaxDB {
         comment: comment
       } ,
       success: function (response) {
-        console.log("successs");
+
         endOfAnimation();
       },
       error: function (e) {

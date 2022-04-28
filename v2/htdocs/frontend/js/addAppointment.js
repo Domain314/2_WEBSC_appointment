@@ -3,7 +3,7 @@ var aid = 0;
 var titel = "";
 var useEarliestDate = true;
 
-// load on ready
+// initialize onclick-functions for the add-new-appointment form and set transparency of #end-date to 0. (hide() would move sibling divs)
 $(document).ready(function () {
   $("#add-option").on('click', function () {
     addDate();
@@ -11,10 +11,10 @@ $(document).ready(function () {
   $("#submit-new-appointment").on('click', function () {
     submitNewAppointment();
   });
-  $("#end-date").hide();
+  $("#end-date").fadeTo(0, 0);
 });
 
-
+// check input and add voting-date to selectedOptions[].
 function addDate() {
   let optionDate = $("#option-date").val();
   let optionTimeStart = $("#option-time-start").val();
@@ -47,7 +47,7 @@ function setEarliestEndDate() {
   $("#end-date").val(String(earlyDate + "T" + earlyTime));
 }
 
-
+// check input and initialize POST, if everything is ok
 function submitNewAppointment() {
 
   let earliestIndex = getEarliestOption();
@@ -91,10 +91,12 @@ function submitNewAppointment() {
   ajaxDB.ajaxAppointment(appointment, selectedOptions);
 }
 
+// submit voting options
 function submitAllOptions() {
   ajaxDB.ajaxOptions(aid, titel, selectedOptions);
 }
 
+// calculate the earliest date for a fitting expiration date
 function getEarliestOption() {
   if (Array.isArray(selectedOptions) && !selectedOptions.length) { return -1; }
   let indexEarliest = 0;
@@ -110,17 +112,19 @@ function getEarliestOption() {
   return indexEarliest;
 }
 
+// fade in and out date for expiration date
 function earliestCheckBox() {
   useEarliestDate = $("#earliestOption").prop("checked");
   if (useEarliestDate) {
-    $("#end-date").hide();
+    $("#end-date").fadeTo(500, 0);
   } else {
     setEarliestEndDate();
-    $("#end-date").fadeIn(500);
+    $("#end-date").fadeTo(500, 1);
 
   }
 }
 
+// just a random function
 function getRandomArbitrary(min, max) {
   return parseInt(Math.random() * (max - min) + min);
 }

@@ -78,10 +78,7 @@ function constructOption(oid, date, timeB, timeE) {
   return div;
 };
 
-// function constructAddNewAppointment() {
-//   let div = document.createElement("div");
-//   div.classList.add("add_new_appointment");
-//   div.id = "add_new_appointment";
-//   div.innerHTML = "<i class='material-icons md-36'>post_add</i><h3>Add new appointment</h3><a>press this card to add a new appointment to the board. You can delete appointments within the specific appointment</a>";
-//   return div;
-// }
+function loadingAnim() {
+  $("#loading-screen").fadeIn(200);
+
+}

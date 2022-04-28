@@ -8,14 +8,13 @@ include( $dir );
 
 $logic = new DBLogic();
 
-// $testarray = array("6399424");
-// $logic->handleRequest("queryAll", $testarray ,"userinput");
-
+// if POST => postData()
 if (isset($_POST["db"])) {
   $result = $logic->postData($_POST["db"], handlePost());
   response("POST", 100, $result);
 }
 
+// if GET => request Data
 if(isset($_GET["db"])) {
   $param = "";
   $method = "";
@@ -30,7 +29,7 @@ if(isset($_GET["db"])) {
   }
 }
 
-
+// set header and response code for answering request
 function response($method, $httpStatus, $data) {
   header('Content-Type: application/json');
     switch ($method) {
@@ -48,6 +47,7 @@ function response($method, $httpStatus, $data) {
     }
 }
 
+// choose the right POST-branch, based on database
 function handlePost() {
   $data;
   switch ($_POST["db"]) {
@@ -67,6 +67,7 @@ function handlePost() {
   return $data;
 }
 
+// generate a new Appointment, based on $_POST and return it
 function createAppointment() {
   $aid = isset($_POST["aid"]) ? $_POST["aid"] : false;
   $titel = isset($_POST["titel"]) ? $_POST["titel"] : false;
@@ -82,6 +83,7 @@ function createAppointment() {
   return $apt;
 }
 
+// generate a new voting Option, based on $_POST and return it
 function createOptions() {
   $options = array();
   $aid = isset($_POST["aid"]) ? $_POST["aid"] : false;
@@ -96,6 +98,7 @@ function createOptions() {
   return $options;
 }
 
+// generate a new vote+comment, based on $_POST and return it
 function createUserInput() {
   $oids = array(); //isset($_POST["oid"]) ? $_POST["oid"] : false;
   $username = isset($_POST["username"]) ? $_POST["username"] : false;
@@ -109,9 +112,6 @@ function createUserInput() {
 
   return $oids;
 }
-
-
-
 
 
  ?>

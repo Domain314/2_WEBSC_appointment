@@ -23,7 +23,7 @@
     justify-content: end;
 }
 
-#go-back:hover {
+#go-back>i:hover {
     color: var(--seven);
     cursor: pointer;
 }
@@ -189,6 +189,14 @@
     font-weight: 300;
 }
 
+.table-data {
+  white-space: nowrap;
+}
+
+td > i {
+  cursor: pointer;
+}
+
 #hide-stats {
     width: 120px;
     height: 40px;
@@ -206,4 +214,49 @@
     transform: scale(1.06);
     background-color: var(--ten);
     cursor:pointer;
+}
+
+/*COMMENT*/
+#message-container-new {
+    display: block;
+    z-index: 2000;
+    padding: 10px;
+    height: 95%;
+    max-height: 300px;
+    width: 95%;
+    max-width: 300px;
+    margin-top: 0px;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    margin-right: -50%;
+    transform: translate(-50%, -50%);
+    background-position: center;
+    background-size: cover;
+    background-image: linear-gradient(90deg, var(--primary), var(--secondary));
+    background-color: rgba(4, 17, 46, 0.90);
+    border-radius: 20px 20px 20px 20px;
+    box-shadow: rgba(0, 0, 0, 0.56) 0px 22px 70px 4px;
+    color: white;
+    overflow: hidden;
+}
+
+#message-title-new {
+    margin-left: 8px;
+    display: flex;
+    justify-content: space-between;
+}
+#message-title-new h1 {
+    font-size: 20px;
+}
+#close-message-container {
+    transition: .3s ease;
+}
+#close-message-container:hover {
+    transform: scale(0.95);
+    cursor: pointer;
+}
+
+#message-new {
+    margin-top: 15px;
 }
